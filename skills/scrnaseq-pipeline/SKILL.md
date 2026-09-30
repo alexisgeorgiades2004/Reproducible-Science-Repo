@@ -49,6 +49,30 @@ the step in-session and writing files only once the result is agreed.
 wrong, say so plainly in the same response and fix the record. Half the value of
 this pipeline is that it caught its own mistakes; hiding them destroys that.
 
+## Where the outputs go
+
+Running the analysis in a scratch workspace is fine. Treating that workspace as the
+*destination* is the mistake, and it is an easy one to make when a project has asked you
+to keep its directories free of clutter - because those are two different requests.
+Machinery is what a project may not want: scripts, config blocks, environments,
+half-finished notebooks. A figure or a results table is not machinery; it is the point of
+the work.
+
+So **write each deliverable into the project's declared output directory as part of the
+step that produced it**, and confirm it landed by listing the directory rather than
+asserting it did. Most projects declare these paths explicitly - look for a data-rules or
+repository-map section and use the paths it names. A common layout is figures to
+`figures/`, tables to `results/`, and intermediate objects (matrices, embeddings, cluster
+labels) to `data/processed/`, with the last of these normally gitignored because the files
+are large.
+
+Why the listing matters rather than a mental note: saving to a session artifact, a
+workspace file or a temp path all *feel* like saving, and none of them makes the output
+available to someone who clones the repository. A step whose figure exists only outside
+the project is not reproducible, however carefully its numbers were verified - and it
+quietly falsifies any claim that the project can be followed without re-running it. Check
+the output directories at the first step boundary, not the last.
+
 ## The 13 steps
 
 | Step | Name | Establishes |

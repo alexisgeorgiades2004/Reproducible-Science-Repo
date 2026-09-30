@@ -21,6 +21,19 @@ This repo is a reproducible scRNA-seq analysis (Immunotherapy Tumor Response). R
 ## Data rules
 - Never modify or overwrite anything in `data/raw/`.
 - Write intermediates to `data/processed/`, tables to `results/`, plots to `figures/`.
+- **A deliverable is not finished until it is in its directory, and I want to see that it
+  landed.** Save the figure or table into its folder as part of the step that produced it,
+  not "later", and end the step by listing that directory so the file is visible. A session
+  artifact, a scratch-workspace file or a temp path does not satisfy this: if it is not in
+  `figures/`, `results/` or `data/processed/`, it does not exist as far as this repo is
+  concerned, and anyone cloning the repo cannot follow the analysis.
+- Running the work in a scratch workspace is fine and often sensible. Treating the scratch
+  workspace as the *destination* is the mistake. Keeping the repo free of unwanted
+  machinery — scripts, configs, environments — is a different request from withholding the
+  outputs; do not confuse the two.
+- Check the output directories at the **first** step boundary, not the last. Three empty
+  directories at step 2 is a two-second fix; at step 13 it is a silent inconsistency in
+  everything already written.
 - Document the source of every dataset in `data/metadata/DATA_SOURCES.md`.
 - Do not commit large data files (see `.gitignore`).
 
