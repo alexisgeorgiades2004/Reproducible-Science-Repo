@@ -1,0 +1,215 @@
+## Analysis log
+One entry per numbered step: what was done, the decision and why, the output, and what it
+means. Entries are added as each step is completed and approved.
+
+<!-- ANALYSIS-LOG-START -->
+
+### Step 1 — Data acquisition
+Downloaded GSE120575 from NCBI GEO by hand: the TPM matrix and the per-cell annotation, two
+files totalling 120.93 MiB, both verified against published SHA-256 digests.
+**Decision:** use the GEO processed matrix, because the raw sequencing reads were deposited in
+dbGaP under `phs001680.v1.p1` (controlled access) and cannot be obtained here.
+**Output:** `data/raw/` holds the two `.gz` files. **Means:** the analysis begins from processed
+expression values, so no step upstream of quantification is reproducible from this repo.
+
+### Step 2 — Load and inspect
+Parsed both files without modifying them. **Decision:** write a custom parser rather than use
+`read_csv` defaults, because the matrix has *two* header rows (cell barcode, then sample label)
+and a trailing tab on every data row, and the annotation file is a filled-in GEO submission
+spreadsheet whose real header is on line 19.
+**Output:** 55,737 genes x 16,291 cells; annotation of 16,291 rows x 11 columns, in the same
+cell order as the matrix. **Means:** the two files describe the same cells and can be joined by
+position, which later steps rely on.
+
+### Step 3 — Cohort characterisation
+Tabulated the annotation. **Decision:** treat the annotation's patient/sample column (48 levels)
+as the biological sample unit and the matrix's second header row (57 levels) as the sequencing
+unit, rather than assuming they agree — they disagree for 991 cells.
+**Output:** 48 samples, of which nine post-treatment samples were split into `_T_enriched` and
+`_myeloid_enriched` sort fractions; 17 responder vs 31 non-responder samples (5,564 vs 10,727
+cells); therapy 35 anti-PD1, 11 anti-CTLA4+PD1, 2 anti-CTLA4.
+**Means:** cell-type *proportions* cannot be compared naively across samples whose composition
+was set by sorting, and pre/post biopsies from the same patients make cells non-independent.
+
+### Step 4 — QC metrics and transform identification
+Computed per-cell and per-gene detection, then identified the value scale.
+**Decision:** test the transform against an invariant rather than infer it from the filename —
+TPM must sum to 10^6 per cell, so un-logging with 2^x - 1 either reproduces that or it does not.
+**Output:** un-logged column sums have median 994,726 with 94.7% of cells within 1% of 10^6,
+confirming the values are log2(TPM+1), not linear TPM. Mitochondrial fraction on the 13
+protein-coding MT genes has median 2.90%; on all 37 MT genes (including rRNA and tRNA) it is
+12.72%. **Means:** the data must not be log-transformed again, and the mitochondrial QC
+threshold is only meaningful against the protein-coding definition.
+
+### Step 5 — Build the working matrix
+Streamed the gzip in 500-gene blocks into a single sparse matrix.
+**Decision:** store sparse and keep all genes, because the matrix is only 4.32% non-zero, so
+sparse storage needs ~300 MB against 3.38 GB dense — filtering genes was never needed to fit in
+memory. **Output:** 55,737 x 16,291, 39,238,221 non-zeros, 138 MiB on disk; gene count and
+non-zero count both matched the independent first pass exactly. **Means:** all later steps load
+this instead of re-reading the raw file, which takes 20-40 minutes per pass.
+
+### Step 6 — QC filtering
+Applied mitochondrial fraction <= 10% on the 13 protein-coding MT genes, a floor of 200 detected
+genes, and a requirement that genes be detected in at least 3 cells.
+**Decision:** drop the `max_genes_per_cell: 6000` cap, because it is a droplet-data doublet
+heuristic and this is plate-based Smart-seq2 with one cell per well.
+**Output:** 16,291 -> 16,048 cells (243 removed, all on mitochondrial content) and 55,737 ->
+45,686 genes, retaining 98.85% of all non-zero values. Removal was even across arms: 1.64% of
+responder vs 1.42% of non-responder cells. **Means:** filtering did not bias the comparison of
+interest. Doublets were not screened for — plate-based data needs a different approach than the
+standard droplet detectors, so this is unassessed rather than clean.
+
+### Step 7 — Normalization
+No normalization applied. **Decision:** skip it deliberately — TPM already is library-size
+normalization and step 4 verified the log transform, so running the usual
+`normalize_total` + `log1p` would double-normalize and double-log the data.
+**Output:** gene means span 0.0001-16.41 and variances 4.3e-05-32.23, consistent with
+log2(TPM+1). **Means:** the only normalization choice remaining was whether to z-score genes
+before PCA, which was done in step 9.
+
+### Step 8 — Feature selection (highly variable genes)
+Selected 2,000 genes by binned normalised dispersion. Took three attempts; the first two were
+wrong and were caught by inspecting which genes had been chosen.
+**Decision:** restrict candidates to genes detected in at least 1% of cells and use
+equal-frequency bins. Computing dispersion on log values (attempt 1) selected lncRNAs and
+mitochondrial tRNAs; computing it correctly but with equal-width bins (attempt 2) still failed,
+because one bin held 61.7% of all genes and so normalised nothing.
+**Output:** 2,000 genes from 17,685 candidates, median detection 333 cells, including `GZMB`,
+`NKG7`, `LYZ`, `CD14`, `MS4A1`, `CD79A`, `PMEL`. **Means:** the gene set now reflects real
+cell-to-cell variation. 153 of the 2,000 are T/B-cell receptor V(D)J segments, which track
+clonotype rather than cell state — an open caveat carried into clustering.
+
+### Step 9 — Dimensionality reduction (PCA)
+Z-scored the 2,000 genes across cells, clipped at +/-10, and took 30 components.
+**Decision:** compute PCA exactly via eigendecomposition of the gene covariance matrix rather
+than an approximate solver, since at 2,000 genes it is cheap and avoids a randomness parameter.
+**Output:** PC1 explains 3.31%, PC2 1.49%, all 30 together 11.8%, with no sharp elbow;
+loadings orthonormal to machine precision. PC1 correlates +0.955 with a myeloid marker score and
+PC2 -0.864 with a B-cell score. **Means:** the dominant structure is immune lineage, as expected
+for CD45+ cells. Two caveats: PC1 also correlates +0.61 with genes detected per cell, so it
+mixes biology with library complexity; and response does not separate in the top components,
+which is expected because response is a property of samples, not a global axis of cell state.
+
+### Step 10 — Clustering
+Built a k-nearest-neighbour graph on the 30 PCs (k=15, 186,626 undirected edges, a single
+connected component) and clustered the cells by Ward hierarchical linkage, cutting the
+dendrogram at 18 groups.
+**Decision:** use Ward rather than Leiden. Leiden is the field standard and is what the original
+paper used, but `leidenalg`, `python-igraph`, `scikit-learn` and `scanpy` are all absent from
+this machine and the sandbox had no network access, so none could be installed. Ward is
+available in SciPy, is deterministic (no random seed, unlike Leiden), and operates on the same
+PC space. **The cluster boundaries will therefore not match the published ones.**
+**Decision:** choose k=18 by the plateau in kNN-graph modularity. Modularity rises steeply to
+k=18 and is then flat to k=30, so 18 is the smallest k that captures the available community
+structure. A subsampled silhouette score disagrees and peaks at k=5; that is expected, because
+silhouette rewards compact well-separated blobs (the three immune lineages) whereas modularity
+rewards graph communities (cell states within lineages). Modularity is the appropriate criterion
+for cell typing.
+**Output:** 18 clusters covering all 16,048 cells, sizes 140 to 3,852 (median 424), modularity
+0.686, silhouette 0.096. Only 7 of the 18 separate visibly in PC1/PC2; the rest are distinguished
+on higher components. **Means:** the cells carry reproducible group structure well above what a
+random graph would give (Q=0.686 against ~0 for random), but the clusters are not yet identified
+as cell types — that is step 12 — and three caveats carry forward: the Ward-for-Leiden
+substitution, the 153 receptor V(D)J genes still in the feature set, and PC1's partial
+confounding with library complexity.
+
+### Step 11 — Embedding (deferred, not skipped)
+Not run. **Decision:** defer. A 2-D embedding needs `umap-learn` or `scikit-learn` (t-SNE) and
+neither is installed; the sandbox had no network access, so neither could be installed, and SciPy
+has no substitute. Step 12 needs only marker expression, so it was run first.
+**Means:** there is currently no 2-D cluster map. This affects presentation only — clustering
+(step 10) and annotation (step 12) both operate in the 30-PC space and do not depend on an
+embedding.
+
+### Step 12 — Cell-type annotation
+Computed per-cluster mean expression and detection fraction for all 45,686 genes, ranked
+one-vs-rest enrichment, and scored a 72-marker curated panel covering T/NK, cycling, B/plasma,
+myeloid, dendritic and non-immune populations.
+**Decision:** annotate from a curated panel plus unbiased top-enriched genes, rather than
+automated reference mapping, because no annotation package is installed and the marker evidence
+is unambiguous at this granularity.
+**Output:** all 18 clusters identified — 8 T/NK (12,704 cells, 79.2%), 4 B/plasma (1,765, 11.0%)
+and 6 myeloid/DC (1,579, 9.8%). Populations recovered include cytotoxic CD8 T (CD8A/CCL5/GZMA),
+memory/naive T (IL7R/TCF7/CCR7), γδ/effector T (TRDC), Treg (FOXP3 2.69, CTLA4, TIGIT, TNFRSF4/18),
+proliferating T (MKI67 5.63), NK (KIR2DL3 4.86, NCAM1, no CD3), naive and memory B, plasma cells
+(MZB1 9.57), pDC (LILRA4 10.01), cDC2 (CD1C/FCER1A) and three macrophage states including an
+SPP1-high tumour-associated population (SPP1 13.51).
+**Verification:** two independent checks. The CD45+ sort is confirmed — the highest cluster-mean
+for `PMEL` is 0.20 and for `MLANA` 0.10, so no melanoma cells survived into the dataset, as the
+protocol intends. And the T/NK-dominant 79/11/10 split matches what is expected of sorted
+tumour-infiltrating leukocytes; a myeloid- or tumour-dominated result would have indicated a
+sort or parsing failure.
+**Means:** the clusters are now biologically named and step 13 can ask about composition and
+state per cell type. Two findings to carry: clusters 6 and 13 (873 cells, 5.4%) are defined
+almost entirely by `TRBV7-*` and `TRBV6-*` segments — the clonotype confound predicted in step 8,
+now demonstrated rather than suspected, and these two should be merged into their parent CD8
+population or the V(D)J genes removed and clustering repeated. High immunoglobulin content in the
+plasma-cell and B clusters is *not* an artifact; for those cells it is the correct biology.
+
+### Steps 8–10 and 12 revised — receptor segments excluded
+Re-ran feature selection, PCA, clustering and annotation with T/B-cell receptor V, D and J
+segments removed from the feature set, after step 12 demonstrated that two clusters (873 cells)
+were defined by TCR V-gene families rather than cell state.
+**Decision:** exclude only V/D/J *segments* (360 genes, matched by requiring a digit after the
+V/D/J letter) and **keep the constant regions** — `IGHM`, `IGHD`, `IGKC`, `IGHG1`, `TRAC`,
+`TRBC2`. Constant regions encode isotype and lineage and are what distinguishes a plasma cell
+from a naive B cell, so removing them would delete real signal rather than noise.
+**Decision:** select k by an explicit rule — the smallest k whose modularity is within 1% of the
+maximum — rather than by eye. Applied to the previous sweep the same rule returns k=18, the value
+chosen manually, so the rule is not tuned to this run. It gives **k=20** here.
+**Output:** 0 of 2,000 HVGs are now receptor segments (was 153); the maximum V(D)J share of any
+cluster's top-50 markers fell from 26% to 4%, median 0%. PCA improved slightly (PC1 3.66% vs
+3.31%, 30 PCs 12.5% vs 11.8%). 20 clusters, sizes 62–3,970, modularity 0.685, single connected
+graph component.
+**Verification:** lineage composition is essentially unchanged — T/NK 78.9%, B/plasma 11.0%,
+myeloid/DC 10.1%, against 79.2/11.0/9.8% before. That is the check that matters: removing 360
+genes should refine substructure without moving the major lineages, and a shifted composition
+would have indicated the exclusion had deleted genuine cell-type signal (which is exactly what
+dropping the constant regions would have done).
+**Means:** the clusters now describe T-cell *functional states* rather than clonotypes — memory
+(IL7R/TCF7), exhausted (GZMK/PD-1/HAVCR2), heat-shock, interferon-stimulated, KIR+, proliferating,
+CXCL13+ CD4 (Tfh-like), Treg (FOXP3 5.03, up from 2.69) and NK. This is the granularity the
+original study reported, and it is the right input for step 13. One caveat: cluster 19
+(inflammatory monocyte) holds 62 cells, too few for reliable per-sample proportions.
+
+### Step 13 — Comparative analysis: baseline composition vs response
+Compared the cell-type composition of responder and non-responder tumours before treatment.
+**Decision:** restrict to **unsorted pre-treatment samples**. All nine sort-enriched samples turn
+out to be post-treatment, so the pre-treatment set is unsorted by construction and the enrichment
+confound disappears rather than needing adjustment. This leaves 19 samples (9 responder, 10
+non-responder; 5,827 cells), which is the contrast that asks whether baseline immune composition
+*predicts* response.
+**Decision:** use the **sample** as the unit of analysis, not the cell. Each of the 19 samples
+comes from a distinct patient (verified: 19 samples, 19 patient IDs), so the samples are
+independent. Testing across the 5,827 cells instead would treat cells from one tumour as
+independent replicates and inflate significance by orders of magnitude.
+**Decision:** Mann-Whitney U (exact, two-sided) per cell type with Benjamini-Hochberg correction
+across the 19 tests, reporting Cliff's δ as effect size. Non-parametric because proportions are
+bounded and skewed at n≈10 per arm. The 62-cell inflammatory monocyte cluster was merged into
+the main monocyte cluster.
+**Output:** two cell types pass q<0.05 and three more sit at q=0.050.
+**Memory T cells (IL7R/TCF7+) are 44.9% of cells in responder tumours vs 14.9% in
+non-responders** (δ=+0.93, p=0.0002, q=0.003) — near-complete separation of the two groups.
+**Proliferating T cells (MKI67+) are depleted in responders**, 0.9% vs 5.1% (δ=−0.80, q=0.020).
+At q=0.050: naive B cells higher in responders (4.0% vs 0.3%), pDCs and CD14+ monocytes lower.
+Exhausted CD8 T cells trend lower in responders (11.8% vs 24.7%) but do not survive correction
+(q=0.195).
+**Verification / comparison to the literature:** the TCF7 result is a recapitulation, not a new
+claim. Sade-Feldman et al. reported that the frequency of TCF7+ CD8 T cells in the tumour
+distinguishes responders from non-responders; that is a *quoted* result from the paper, and the
+δ=+0.93 above is our own independent measurement from the GEO matrix through this pipeline. The
+pipeline reproducing the study's central finding from raw data is the strongest end-to-end check
+available here.
+**Means, and what it does not mean:** baseline abundance of memory-phenotype T cells separates
+these two groups strongly. Four caveats. (i) n=19 patients — the exact test can reach p≈4e-5 at
+this size, so q=0.003 is real, but the five borderline hits at q=0.050 should be treated as
+suggestive. (ii) Proportions are **compositional** and sum to 100%, so a 30-point gain in one
+type mechanically forces losses elsewhere; memory-T and exhausted-CD8 fractions correlate at
+−0.43 across samples, so the exhausted-CD8 depletion may be partly arithmetic rather than
+independent biology. (iii) Therapy is unbalanced within the set (8 of 10 non-responders on
+anti-PD1 alone vs 4 of 9 responders) and was not adjusted for. (iv) This is an association with a
+binary response label, not a survival analysis, and not a causal claim.
+
+<!-- ANALYSIS-LOG-END -->
+
