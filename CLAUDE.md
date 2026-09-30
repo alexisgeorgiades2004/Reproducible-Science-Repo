@@ -1,72 +1,42 @@
-# CLAUDE.md
+# CLAUDE.md: Project rules for Claude Science
 
-Rules for AI agents working in this repository. Read this file and `README.md` at the start of every session and follow them for all work in this project. If a rule conflicts with a request, say so and ask before proceeding.
+This repo is a reproducible scRNA-seq analysis (Immunotherapy Tumor Response). Read this file and
+`README.md` at the start of every session. Follow these rules.
 
-## Project layout
+## Notebook-style working
+- Work in notebooks in `workflows/` (Quarto `.qmd`, R Markdown `.Rmd`, or Jupyter `.ipynb`).
+- One small step per chunk. Before each chunk, write 1-2 sentences saying what it does and why.
+- Every chunk must produce a visible output I can verify: a table, printed dimensions, or a plot.
+- After each chunk or stage, state briefly what the output shows and flag anything unexpected.
+- Do not skip ahead. Finish and show one stage before starting the next.
+- Notebooks must run top to bottom on a clean session.
 
-- `data/raw/` original data, read-only
-- `data/metadata/` data sources, dates, licenses, dictionaries
-- `data/processed/` generated data
-- `src/` reusable code
-- `workflows/` ordered pipelines from raw data to figures
-- `configs/` parameters, seeds, thresholds, paths
-- `results/` tables and statistics
-- `figures/` plots
-- `reports/` written summaries
-- `tests/` checks
-- `environment/` package and version records
+## Reproducibility
+- Set one global random seed (from `configs/params.yaml`) at the top of every notebook.
+- Put all thresholds and parameters in `configs/params.yaml`, not hard-coded in chunks.
+- End every notebook with a session-info chunk (`sessionInfo()` or package versions).
+- Use relative paths from the repo root. No absolute paths like `C:\Users\...`.
+- Record every package install in `environment/` (renv snapshot or environment.yml).
 
-## Data
+## Data rules
+- Never modify or overwrite anything in `data/raw/`.
+- Write intermediates to `data/processed/`, tables to `results/`, plots to `figures/`.
+- Document the source of every dataset in `data/metadata/DATA_SOURCES.md`.
+- Do not commit large data files (see `.gitignore`).
 
-- Never modify, rename, move or delete anything in `data/raw/`.
-- When new raw data is added, document it in `data/metadata/` (source, date obtained, license, description).
-- Write all derived data to `data/processed/`. It must be regenerable from code.
+## Git rules
+- Do not commit or push unless I ask. When asked, use a clear message describing the stage
+  (for example `Add QC step, filter mito >10%`).
+- Never commit secrets, tokens, or `.env` files.
+- Never rewrite history (no force-push) without asking.
 
-## Code and parameters
+## Reporting
+- After completing a stage, add a 2-3 line summary to the Analysis log section in `README.md`
+  (between the `ANALYSIS-LOG` markers).
+- Be explicit about uncertainty. If a result looks off (odd cell counts, batch effects), say so
+  rather than smoothing over it.
 
-- Put all analysis code in `src/` or `workflows/`. Do not do analysis in one-off cells that are not saved to the repository.
-- Keep workflows as ordered, named steps. Running them in order must reproduce every output.
-- Put every parameter (thresholds, cutoffs, file paths, seeds) in `configs/`. Do not hard-code them.
-- Do not change a parameter between runs without recording the change and the reason.
-- Use a seed from `configs/` for every stochastic step and record it with the output.
-
-## Environment
-
-- Prefer several small environments matched to analysis steps over one large environment.
-- After each run, record the exact package and language versions in `environment/`.
-
-## Outputs
-
-- Save outputs in a subfolder named for the analysis or run, for example `results/scrna-immunotherapy/`.
-- Never overwrite earlier results. Use a new run folder or a new commit.
-- Verify outputs before reporting them: check shapes, counts, missing values and that figures match the tables.
-- Add or run checks in `tests/` when code or data changes.
-
-## Honesty and evidence
-
-- Do not invent data, values, citations or results. If something cannot be determined, say so.
-- Record every decision you make (filters, thresholds, methods, exclusions) and the reason, in the report or a decisions section.
-- Keep measured results separate from interpretation. Label interpretation clearly as interpretation.
-- State uncertainty and limitations.
-
-## Safety
-
-- Work only inside the granted repository folder.
-- Do not delete files outside `results/`, `figures/` and `data/processed/`, and never run destructive commands without explicit approval.
-- Do not access other machines or networks unless asked.
-
-## Git
-
-- Propose a commit message after each meaningful step and wait for confirmation before committing.
-- Do not push, force-push, rebase or rewrite history unless asked.
-- Record the starting commit hash in every report.
-
-## End of every task
-
-Finish with a short summary that lists:
-
-1. Which rules from this file you applied.
-2. The seeds used.
-3. The environment and package versions.
-4. The files created or changed.
-5. The Git commit the work started from.
+## Agents
+Agent definitions live in `.claude/agents/`:
+- `qc-reviewer`: checks QC thresholds and outputs before moving on.
+- `methods-writer`: drafts methods and results text from the notebooks.
