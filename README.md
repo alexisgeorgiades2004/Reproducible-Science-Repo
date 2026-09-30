@@ -84,6 +84,31 @@ an embedding library) — the log says which and why.
 3. Download the raw data as described in `data/metadata/DATA_SOURCES.md` into `data/raw/`.
 4. Run the notebooks in `workflows/` in numeric order.
 
+## Analysis Log
+At the end of every session, before finishing, write an analysis log entry in the
+`Analysis Logs/` folder at the root of the repo (C:\Users\Alexi\repos\Reproducible-Science-Repo).
+If the folder doesn't exist, create it.
+
+Create one new Markdown file per session, named with the date and a short topic, for
+example `2026-09-30_data-download.md`. Never overwrite or edit earlier log files.
+
+Each entry must include:
+1. Session goal: what I asked for, in one or two sentences.
+2. What was done: a numbered list of the steps you actually ran, in order, with the
+   files you created, changed, or downloaded (full repo-relative paths).
+3. Why: the reason for each major decision, including parameters, thresholds, tools,
+   and alternatives you considered and rejected.
+4. Key outputs: the main results I can verify (cell and gene counts, files saved, figures
+   produced), with the paths where they were saved.
+5. Problems and deviations: errors, warnings, anything unexpected, workarounds, and
+   anything you were unsure about. Do not omit failures.
+6. Reproducibility info: random seed, package and software versions, dataset source
+   and accession, and the parameters used (from configs/params.yaml).
+7. Next steps: what remains to be done.
+
+Only report what actually happened in the session. Do not invent results or claim
+steps were completed if they were not. Do not commit or push the log file; leave
+it for me to review and commit.
 
 ## Software versions
 See `environment/` and the session-info chunk at the end of every notebook.
