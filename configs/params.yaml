@@ -5,6 +5,18 @@ qc:
   min_genes_per_cell: 200
   max_genes_per_cell: 6000
   max_percent_mito: 10
+  # Mito fraction is computed on the 13 PROTEIN-CODING MT genes only. Matching the
+  # bare "MT-" prefix instead picks up all 37 mitochondrial genes including MT-RNR1/2
+  # rRNA and 22 tRNAs; MT-RNR2 is the highest-expressed gene in this dataset and that
+  # definition puts the median at 12.7%, failing 75% of cells. On the 13 protein-coding
+  # genes the median is 2.90% and the 10% cutoff removes 243 cells (1.49%).
+  mito_gene_set: protein_coding_13
+  # Genes must be detected in at least this many cells (after cell filtering).
+  min_cells_per_gene: 3
+  # NOTE: max_genes_per_cell above is NOT applied. It is a droplet-data doublet
+  # heuristic; this is plate-based Smart-seq2 with one cell per well, and the cap
+  # would discard 164 high-complexity cells for a reason that does not apply here.
+  apply_max_genes_per_cell: false
 
 normalization:
   n_variable_features: 2000
