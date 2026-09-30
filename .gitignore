@@ -1,0 +1,44 @@
+# Data (keep folders, ignore contents; small metadata files are tracked)
+data/raw/*
+data/processed/*
+!data/raw/README.md
+!data/processed/README.md
+
+# R
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+.Rapp.history
+renv/library/
+renv/staging/
+*_cache/
+*_files/
+
+# Python / Jupyter
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+
+# Large single-cell objects
+*.rds
+*.h5ad
+*.h5
+*.loom
+*.rda
+
+# Secrets
+.env
+*.key
+*.pem
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
