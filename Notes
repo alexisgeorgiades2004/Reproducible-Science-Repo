@@ -1,0 +1,31 @@
+#### Prompt used for claude science 9/30/26 to analyze scRNAseq version2. Version 1 was used to "train" my repo ie. set up rules
+and formatting that I want for projects moving forward. Claude science updated all these files and now repo is all up to date.
+I had the og claude science project run through all the steps so I could see what I wanted and where.
+
+After all this, this is the prompt it gave me to ask it next time, when the repo is set up as it currently is on 9/30/26 11:40am
+so that it doesn't download any data (data placed in correct folders mannually) and it can just start the loading and processing.
+All workspaces should be in claude science, but figures and outputs will go into folders for checking and documentation.
+
+Prompt:
+
+Work in C:\Users\Alexi\repos\Reproducible-Science-Repo. Read README.md and
+CLAUDE.md there first, then load the scrnaseq-pipeline skill. Follow both —
+including CLAUDE.md's data rules on where outputs go, and the skill's gating,
+verification and figure-explanation conventions.
+
+The data is already present and verified; do NOT download anything. Re-verify
+these two checksums as your first visible output, then begin at step 2:
+  GSE120575_Sade_Feldman_melanoma_single_cells_TPM_GEO.txt.gz
+    126,721,504 B  sha256 43fa3d50acd151be89aa8e94ac83cc730dbbf7623473339c5534b77c16d48e3f
+  GSE120575_patient_ID_single_cells.txt.gz
+    83,035 B  sha256 6a228029df713006fb465f02cc3e1e17540b0ddaf4b69374b116aeb135cdf73f
+Step 1 is done except DATA_SOURCES.md, which still needs filling in.
+
+Run code in your own workspace. Environment: ARM64 Windows; scanpy,
+scikit-learn, leidenalg, python-igraph and umap-learn are NOT installed and
+network access has been intermittent — check what imports before planning a
+step that needs a package. Exact PCA, Ward clustering and marker-based
+annotation all run on numpy and scipy alone.
+
+README.md holds the previous run's step 1-13 log. Treat it as the reference: if
+your numbers differ, flag the difference rather than overwriting the entry.
