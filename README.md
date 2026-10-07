@@ -47,9 +47,10 @@ project's history along with it.
 | Skill | Covers |
 |---|---|
 | `skills/scrnaseq-pipeline/` | Single-cell RNA-seq, as a gated 13-step pipeline: acquisition through QC, feature selection, clustering, annotation and condition comparison. Also defines the step-to-notebook grouping and the outputs each step leaves behind. |
+| `skills/figure-standards/` | Making graphs. Sourced data-presentation rules, each traceable to a published guideline or journal standard rather than to taste, plus this repo's own figure conventions. Load it with the platform's `figure-style`, which supplies the rendering helpers. |
 
 Claude Science loads a skill on its own when the work matches it; to load one by
-hand, `skill({skill: "scrnaseq-pipeline"})`. Step numbers used in the analysis logs
+hand, `skill({skill: "<name>"})`. Step numbers used in the analysis logs
 refer to the sequence in the relevant skill.
 
 ## Repository map
