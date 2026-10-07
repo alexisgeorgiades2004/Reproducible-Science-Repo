@@ -1,6 +1,6 @@
 ---
 name: scrnaseq-pipeline
-description: "Run single-cell RNA-seq analysis as a gated 13-step pipeline: acquisition, QC, normalisation, feature selection, PCA, clustering, embedding, cell-type annotation and condition comparison. Use whenever the user mentions scRNA-seq, single-cell or single-nucleus RNA-seq, a GEO expression matrix, QC filtering of cells, highly variable genes, clustering cells, UMAP, marker genes, cell-type annotation, or comparing cell-type composition between conditions or treatment arms - even when they name only one stage, e.g. run QC on this matrix, or cluster these cells. Covers plate-based Smart-seq2 and droplet 10x data and reanalysis of published datasets. Carries traps that cost real debugging time: GEO matrices with two header rows and a trailing tab, matrices already log-transformed despite a TPM filename, mitochondrial QC on the wrong MT gene set, dispersion binning that silently selects noise, and receptor V(D)J genes that split T cells by clonotype rather than cell state."
+description: "Run single-cell RNA-seq analysis as a gated 13-step pipeline: acquisition, QC, normalisation, feature selection, PCA, clustering, embedding, cell-type annotation and condition comparison. Use whenever the user mentions scRNA-seq, single-cell or single-nucleus RNA-seq, a GEO expression matrix, QC filtering of cells, highly variable genes, clustering cells, UMAP, marker genes, cell-type annotation, or comparing cell-type composition between conditions or treatment arms - even when they name only one stage (e.g. QC this matrix, cluster these cells). Covers Smart-seq2 and 10x data, and defines how the steps group into six notebooks, which parameters belong in a config file, and the outputs each step must leave behind. Carries traps that cost debugging time: GEO matrices with two header rows and a trailing tab, matrices log-transformed despite a TPM filename, mitochondrial QC on the wrong MT gene set, dispersion binning that selects noise, and V(D)J genes that split T cells by clonotype rather than cell state."
 ---
 
 # scRNA-seq analysis pipeline
@@ -72,6 +72,47 @@ available to someone who clones the repository. A step whose figure exists only 
 the project is not reproducible, however carefully its numbers were verified - and it
 quietly falsifies any claim that the project can be followed without re-running it. Check
 the output directories at the first step boundary, not the last.
+
+## Project layout: notebooks, parameters, outputs
+
+The thirteen steps group into six notebooks. The grouping is not cosmetic: each
+notebook ends at a point where the next decision depends on something the reader
+has to agree with first — the cohort is characterised before any filter is chosen,
+the feature space is fixed before any cell is clustered, the cells are named before
+any condition is compared. Keep the numbering even when a project runs the steps in
+one session rather than six files, because the step numbers are what the analysis
+log, the parameters file and the output filenames all refer to.
+
+Defer to whatever paths the project declares (look for its repository map or data
+rules). Where it declares none, this layout works:
+
+| Steps | Notebook | What it should leave behind |
+|---|---|---|
+| 1-3 — acquisition, load/inspect, cohort | `workflows/01_acquire_inspect` | Provenance file (accession, URL, date, sizes, SHA-256); sample/condition table; cohort-structure figure |
+| 4-6 — QC metrics, working matrix, filtering | `workflows/02_qc` | Per-cell QC table; sparse working matrix + gene order; removed-cell table; QC-metric and filtering figures |
+| 7-9 — normalisation, features, PCA | `workflows/03_features_pca` | Selected HVGs and the candidate table behind them; PC scores and loadings; variance-explained table; HVG and PCA figures |
+| 10-11 — clustering, embedding | `workflows/04_cluster_embed` | Per-cell cluster labels; modularity sweep; cluster-by-sample composition; clustering figure |
+| 12 — annotation | `workflows/05_annotate` | Per-cluster marker ranking; marker-panel scores; cluster-to-cell-type table; annotation figure |
+| 13 — comparison | `workflows/06_compare` | Per-sample proportions; test results with effect sizes and adjusted p-values; sensitivity analysis; composition figure |
+
+**Every threshold and the seed belong in a parameters file**, not inline in a chunk:
+mitochondrial cutoff, minimum genes per cell and cells per gene, HVG count and
+detection floor, number of PCs retained, k for the kNN graph, cluster count, and the
+random seed. The test of whether a value belongs there is whether a reviewer might
+reasonably ask you to change it and re-run — which is true of all of the above. A
+threshold buried in a chunk is a threshold nobody will find when the result is
+questioned.
+
+**The working matrix is written once at step 5 and the raw file is never read
+again.** Everything from step 6 onward reads the saved sparse matrix and its gene
+order. This is what makes the later steps cheap enough to re-run, and it is why a
+mistake in steps 1-4 is the expensive kind: it propagates into an object that every
+subsequent step trusts.
+
+**A step may be a no-op, but it is never a silent skip.** Step 7 is a no-op on data
+that arrives already normalised and logged; step 11 may be deferred when no embedding
+library is installed. Both cases get a stated reason in the log, because "no output"
+and "not run" look identical six months later.
 
 ## The 13 steps
 

@@ -1,7 +1,10 @@
 # CLAUDE.md: Project rules for Claude Science
 
-This repo is a reproducible scRNA-seq analysis (Immunotherapy Tumor Response). Read this file and
-`README.md` at the start of every session. Follow these rules.
+This repo is a reproducible-analysis project. At the start of every session read this file and
+`README.md`, then load the domain-method skill for the work at hand — README lists what is
+vendored under `skills/`; for single-cell work it is `scrnaseq-pipeline`. The rules below cover
+how work is recorded, verified, gated and reported here, whatever the domain; the analysis
+method itself lives in the skill. Follow both.
 
 ## Notebook-style working
 - Work in notebooks in `workflows/` (Quarto `.qmd`, R Markdown `.Rmd`, or Jupyter `.ipynb`).
@@ -39,13 +42,13 @@ This repo is a reproducible scRNA-seq analysis (Immunotherapy Tumor Response). R
 
 ## Git rules
 - Do not commit or push unless I ask. When asked, use a clear message describing the stage
-  (for example `Add QC step, filter mito >10%`).
+  (for example `Add step 6 filtering; thresholds in configs/params.yaml`).
 - Never commit secrets, tokens, or `.env` files.
 - Never rewrite history (no force-push) without asking.
 
 ## Reporting
-- After completing a stage, add a 2-3 line summary to the Analysis log section in `README.md`
-  (between the `ANALYSIS-LOG` markers).
+- At the end of the session, write the analysis log entry specified in `README.md`: one new
+  Markdown file in `Analysis Logs/`, named by date and topic, never overwriting an earlier one.
 - Be explicit about uncertainty. If a result looks off (odd cell counts, batch effects), say so
   rather than smoothing over it.
 
@@ -53,8 +56,8 @@ This repo is a reproducible scRNA-seq analysis (Immunotherapy Tumor Response). R
   one to two paragraphs saying what was done and how it was verified.** Not a bullet list of
   commands. Say what the step produced, what the check was, and what the check would have
   caught had it failed.
-- **If a step produces a graph, show the graph with that summary.** PCA, UMAP, QC
-  distributions, marker heatmaps and the like are shown inline, not merely described or saved
+- **If a step produces a graph, show the graph with that summary.** Distributions,
+  projections, heatmaps and the like are shown inline, not merely described or saved
   to a path. A step whose output is visual is not reported until I can see it.
 - Flag anything unexpected in the same summary rather than in a later step.
 - **Stop after each numbered analysis step and wait for my approval before starting the next.**
@@ -64,8 +67,8 @@ This repo is a reproducible scRNA-seq analysis (Immunotherapy Tumor Response). R
   decision I have to make before it can run.
 - **Every figure gets a plain-language explanation next to it.** Say what is on each axis, where
   to look, what the pattern means, and — just as important — what it does *not* mean. Expand
-  jargon on first use ("highly variable genes: the genes whose expression differs most from cell
-  to cell, used because uniformly expressed genes carry no information for grouping cells").
+  jargon on first use: name the term, say in one clause what it is, and say why this step uses
+  it, rather than leaving the convention to be inferred.
   Assume I know the biology but not this pipeline's conventions. A figure I would have to ask you
   to interpret is not a finished figure.
 
@@ -103,6 +106,9 @@ This repo is a reproducible scRNA-seq analysis (Immunotherapy Tumor Response). R
 - Reading and running code in the session needs no approval. Only installs and new files do.
 
 ## Agents
-Agent definitions live in `.claude/agents/`:
+Agent definitions, if any, live in `.claude/agents/`. **The directory is currently empty** —
+nothing is defined there, so do not assume a reviewer or writer agent exists. If a role is
+worth keeping, propose it first and write the definition only once I agree. Roles that have
+come up but are not implemented:
 - `qc-reviewer`: checks QC thresholds and outputs before moving on.
 - `methods-writer`: drafts methods and results text from the notebooks.
