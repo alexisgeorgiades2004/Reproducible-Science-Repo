@@ -1,0 +1,244 @@
+cell_id,patient_sample,timepoint,response,cluster,cell_type
+A12_P3_M11,Pre_P1,Pre,Responder,10,Activated T (CD8-biased)
+C8_P3_M11,Pre_P1,Pre,Responder,10,Activated T (CD8-biased)
+E8_P1_M11,Pre_P1,Pre,Responder,10,Activated T (CD8-biased)
+E9_P3_M11,Pre_P1,Pre,Responder,10,Activated T (CD8-biased)
+A5_P1_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+A8_P1_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+B10_P1_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+B1_P1_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+B3_P2_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+C11_P2_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+C11_P3_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+C3_P2_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+D10_P2_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+D1_P1_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+D5_P2_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+E10_P5_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+E1_P4_m15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+E2_P2_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+E8_P2_M15,Post_P1,Post,Responder,6,Activated CD8 T (GZMK+ TIGIT+)
+F10_P2_M15,Post_P1,Post,Responder,9,Effector-memory CD8 T (GZMK+)
+F11_P1_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+F5_P1_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+F7_P1_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+G4_P2_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+G9_P1_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+H3_P1_M15,Post_P1,Post,Responder,10,Activated T (CD8-biased)
+A12_P2_M55_L001,Post_P1_2,Post,Non-responder,10,Activated T (CD8-biased)
+A3_P2_M55_L001,Post_P1_2,Post,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+B1_P2_M55_L001,Post_P1_2,Post,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+B6_P2_M55_L001,Post_P1_2,Post,Non-responder,12,Naive / central-memory T (TCF7+)
+B8_P2_M55_L001,Post_P1_2,Post,Non-responder,10,Activated T (CD8-biased)
+B9_P2_M55_L001,Post_P1_2,Post,Non-responder,10,Activated T (CD8-biased)
+C1_P1_M55_L001,Post_P1_2,Post,Non-responder,1,pDC
+C1_P2_M55_L001,Post_P1_2,Post,Non-responder,10,Activated T (CD8-biased)
+C3_P2_M55_L001,Post_P1_2,Post,Non-responder,0,B cell (IGHM+)
+D10_P2_M55_L001,Post_P1_2,Post,Non-responder,7,"CD4 T, Treg-like"
+D5_P2_M55_L001,Post_P1_2,Post,Non-responder,10,Activated T (CD8-biased)
+D7_P2_M55_L001,Post_P1_2,Post,Non-responder,0,B cell (IGHM+)
+D8_P2_M55_L001,Post_P1_2,Post,Non-responder,0,B cell (IGHM+)
+E3_P2_M55_L001,Post_P1_2,Post,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+F1_P2_M55_L001,Post_P1_2,Post,Non-responder,0,B cell (IGHM+)
+F2_P2_M55_L001,Post_P1_2,Post,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+G5_P2_M55_L001,Post_P1_2,Post,Non-responder,10,Activated T (CD8-biased)
+G6_P2_M55_L001,Post_P1_2,Post,Non-responder,5,Exhausted CD8 T (cytotoxic)
+G8_P2_M55_L001,Post_P1_2,Post,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+E8_P3_M34,Pre_P2,Pre,Non-responder,7,"CD4 T, Treg-like"
+G8_P3_M34,Pre_P2,Pre,Non-responder,3,Proliferating T cell
+H4_P2_M34,Pre_P2,Pre,Non-responder,10,Activated T (CD8-biased)
+B7_P4_M39,Post_P2,Post,Non-responder,10,Activated T (CD8-biased)
+E8_P3_M39,Post_P2,Post,Non-responder,10,Activated T (CD8-biased)
+F11_P1_M39,Post_P2,Post,Non-responder,10,Activated T (CD8-biased)
+G10_P2_M39,Post_P2,Post,Non-responder,10,Activated T (CD8-biased)
+A3_P1_M17,Pre_P3,Pre,Non-responder,4,Monocyte / macrophage
+A5_P1_M17,Pre_P3,Pre,Non-responder,4,Monocyte / macrophage
+A8_P1_M17,Pre_P3,Pre,Non-responder,8,NK / cytotoxic effector
+B12_P1_M17,Pre_P3,Pre,Non-responder,10,Activated T (CD8-biased)
+B5_P1_M17,Pre_P3,Pre,Non-responder,4,Monocyte / macrophage
+B9_P1_M17,Pre_P3,Pre,Non-responder,10,Activated T (CD8-biased)
+C12_P2_M17,Pre_P3,Pre,Non-responder,10,Activated T (CD8-biased)
+C1_P2_M17,Pre_P3,Pre,Non-responder,12,Naive / central-memory T (TCF7+)
+C4_P1_M17,Pre_P3,Pre,Non-responder,10,Activated T (CD8-biased)
+D2_P2_M17,Pre_P3,Pre,Non-responder,4,Monocyte / macrophage
+D2_P6_M17,Pre_P3,Pre,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+D4_P1_M17,Pre_P3,Pre,Non-responder,12,Naive / central-memory T (TCF7+)
+E12_P2_M17,Pre_P3,Pre,Non-responder,4,Monocyte / macrophage
+E1_P2_M17,Pre_P3,Pre,Non-responder,8,NK / cytotoxic effector
+E7_P2_M17,Pre_P3,Pre,Non-responder,4,Monocyte / macrophage
+E8_P1_M17,Pre_P3,Pre,Non-responder,4,Monocyte / macrophage
+F12_P2_M17,Pre_P3,Pre,Non-responder,11,Dendritic cell (cDC)
+F4_P2_M17,Pre_P3,Pre,Non-responder,10,Activated T (CD8-biased)
+G11_P1_M17,Pre_P3,Pre,Non-responder,10,Activated T (CD8-biased)
+G4_P1_M17,Pre_P3,Pre,Non-responder,10,Activated T (CD8-biased)
+G9_P1_M17,Pre_P3,Pre,Non-responder,10,Activated T (CD8-biased)
+H12_P1_M17,Pre_P3,Pre,Non-responder,9,Effector-memory CD8 T (GZMK+)
+H12_P6_M17,Pre_P3,Pre,Non-responder,11,Dendritic cell (cDC)
+H3_P6_M17,Pre_P3,Pre,Non-responder,10,Activated T (CD8-biased)
+H4_P2_M17,Pre_P3,Pre,Non-responder,4,Monocyte / macrophage
+A7_P1_M23,Post_P3,Post,Non-responder,10,Activated T (CD8-biased)
+C4_P2_M23,Post_P3,Post,Non-responder,4,Monocyte / macrophage
+C7_P2_M23,Post_P3,Post,Non-responder,10,Activated T (CD8-biased)
+E3_P3_M23,Post_P3,Post,Non-responder,12,Naive / central-memory T (TCF7+)
+E7_P7_M36_L001,Post_P3_2,Post,Non-responder,10,Activated T (CD8-biased)
+G6_P6_M36_L001,Post_P3_2,Post,Non-responder,4,Monocyte / macrophage
+H7_P9_M36_L001,Post_P3_2,Post,Non-responder,10,Activated T (CD8-biased)
+H9_P9_M36_L001,Post_P3_2,Post,Non-responder,10,Activated T (CD8-biased)
+C2_P3_M42,Pre_P4,Pre,Non-responder,4,Monocyte / macrophage
+E3_P4_M42,Pre_P4,Pre,Non-responder,4,Monocyte / macrophage
+G4_P2_M47,Post_P4,Post,Responder,10,Activated T (CD8-biased)
+D8_P5_M47_L001,Post_P4,Post,Responder,0,B cell (IGHM+)
+E6_P2_MMD1-84A_L001,Post_P5,Post,Non-responder,10,Activated T (CD8-biased)
+G6_P3_MMD1-84A_L001,Post_P5,Post,Non-responder,10,Activated T (CD8-biased)
+A8_P1_M8_L001,Pre_P6,Pre,Non-responder,10,Activated T (CD8-biased)
+B4_P2_M8_L001,Pre_P6,Pre,Non-responder,1,pDC
+C10_P2_M8_L001,Pre_P6,Pre,Non-responder,4,Monocyte / macrophage
+E4_P4_M8_L001,Pre_P6,Pre,Non-responder,10,Activated T (CD8-biased)
+F1_P4_M8_L001,Pre_P6,Pre,Non-responder,10,Activated T (CD8-biased)
+F6_P4_M8_L001,Pre_P6,Pre,Non-responder,10,Activated T (CD8-biased)
+H8_P1_M8_L001,Pre_P6,Pre,Non-responder,10,Activated T (CD8-biased)
+C7_P3_M67_L001,Post_P6,Post,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+G4_P2_M67_L001,Post_P6,Post,Non-responder,4,Monocyte / macrophage
+H9_P2_M67_L001,Post_P6,Post,Non-responder,10,Activated T (CD8-biased)
+E12_P6_M63-B1,Post_P7,Post,Responder,10,Activated T (CD8-biased)
+F10_P7_M63-B1,Post_P7,Post,Responder,4,Monocyte / macrophage
+F12_P7_M63-B1,Post_P7,Post,Responder,4,Monocyte / macrophage
+A3_P4_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+B11_P3_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+B4_P5_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+B6_P5_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+B8_P2_MMD4_L001,Pre_P8,Pre,Responder,10,Activated T (CD8-biased)
+B8_P3_MMD4_L001,Pre_P8,Pre,Responder,12,Naive / central-memory T (TCF7+)
+B9_P2_MMD4_L001,Pre_P8,Pre,Responder,12,Naive / central-memory T (TCF7+)
+C10_P2_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+C11_P4_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+C1_P4_MMD4_L001,Pre_P8,Pre,Responder,10,Activated T (CD8-biased)
+C2_P2_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+D10_P3_MMD4_L001,Pre_P8,Pre,Responder,10,Activated T (CD8-biased)
+D12_P2_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+D12_P3_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+D1_P3_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+D2_P5_MMD4_L001,Pre_P8,Pre,Responder,0,B cell (IGHM+)
+D3_P2_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+D4_P3_MMD4_L001,Pre_P8,Pre,Responder,10,Activated T (CD8-biased)
+D4_P5_MMD4_L001,Pre_P8,Pre,Responder,0,B cell (IGHM+)
+D8_P3_MMD4_L001,Pre_P8,Pre,Responder,10,Activated T (CD8-biased)
+E12_P4_MMD4_L001,Pre_P8,Pre,Responder,8,NK / cytotoxic effector
+E5_P3_MMD4_L001,Pre_P8,Pre,Responder,12,Naive / central-memory T (TCF7+)
+E8_P4_MMD4_L001,Pre_P8,Pre,Responder,10,Activated T (CD8-biased)
+F11_P2_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+F12_P5_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+F2_P2_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+F2_P3_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+F3_P4_MMD4_L001,Pre_P8,Pre,Responder,10,Activated T (CD8-biased)
+F5_P2_MMD4_L001,Pre_P8,Pre,Responder,10,Activated T (CD8-biased)
+F5_P3_MMD4_L001,Pre_P8,Pre,Responder,10,Activated T (CD8-biased)
+F6_P5_MMD4_L001,Pre_P8,Pre,Responder,8,NK / cytotoxic effector
+G11_P3_MMD4_L001,Pre_P8,Pre,Responder,12,Naive / central-memory T (TCF7+)
+G1_P3_MMD4_L001,Pre_P8,Pre,Responder,12,Naive / central-memory T (TCF7+)
+G4_P2_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+H9_P4_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+A3_P6_MMD4_L001,Pre_P8,Pre,Responder,11,Dendritic cell (cDC)
+A4_P6_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+B1_P6_MMD4_L001,Pre_P8,Pre,Responder,0,B cell (IGHM+)
+C3_P6_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+E1_P6_MMD4_L001,Pre_P8,Pre,Responder,8,NK / cytotoxic effector
+F12_P6_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+F9_P6_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+G2_P6_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+G6_P6_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+G7_P6_MMD4_L001,Pre_P8,Pre,Responder,4,Monocyte / macrophage
+B5_P11_MMD5_L001,Post_P8,Post,Responder,0,B cell (IGHM+)
+F12_P3_MMD5_L001,Post_P8,Post,Responder,3,Proliferating T cell
+B11_P10_MMD2-36B_L001,Post_P10,Post,Non-responder,10,Activated T (CD8-biased)
+B5_P9_MMD2-36B_L001,Post_P10,Post,Non-responder,10,Activated T (CD8-biased)
+C5_P9_MMD2-36B_L001,Post_P10,Post,Non-responder,10,Activated T (CD8-biased)
+D4_P8_MMD2-36B_L001,Post_P10,Post,Non-responder,8,NK / cytotoxic effector
+D9_P9_MMD2-36B_L001,Post_P10,Post,Non-responder,10,Activated T (CD8-biased)
+E10_P10_MMD2-36B_L001,Post_P10,Post,Non-responder,12,Naive / central-memory T (TCF7+)
+E10_P8_MMD2-36B_L001,Post_P10,Post,Non-responder,10,Activated T (CD8-biased)
+E5_P6_MMD2-36B_L001,Post_P10,Post,Non-responder,1,pDC
+F8_P8_MMD2-36B_L001,Post_P10,Post,Non-responder,4,Monocyte / macrophage
+G12_P10_MMD2-36B_L001,Post_P10,Post,Non-responder,10,Activated T (CD8-biased)
+G4_P9_MMD2-36B_L001,Post_P10,Post,Non-responder,8,NK / cytotoxic effector
+G5_P9_MMD2-36B_L001,Post_P10,Post,Non-responder,10,Activated T (CD8-biased)
+G8_P8_MMD2-36B_L001,Post_P10,Post,Non-responder,10,Activated T (CD8-biased)
+H1_P10_MMD2-36B_L001,Post_P10,Post,Non-responder,10,Activated T (CD8-biased)
+B1_P3_M44_L001,Post_P11,Post,Non-responder,4,Monocyte / macrophage
+E5_P4_M44_L001,Post_P11,Post,Non-responder,10,Activated T (CD8-biased)
+F11_P4_M44_L001,Post_P11,Post,Non-responder,4,Monocyte / macrophage
+G1_P4_M44_L001,Post_P11,Post,Non-responder,9,Effector-memory CD8 T (GZMK+)
+H10_P4_M44_L001,Post_P11,Post,Non-responder,4,Monocyte / macrophage
+A11_P2_M66_L001,Pre_P12,Pre,Non-responder,1,pDC
+C3_P1_M66_L001,Pre_P12,Pre,Non-responder,10,Activated T (CD8-biased)
+F5_P4_M66_L001,Pre_P12,Pre,Non-responder,10,Activated T (CD8-biased)
+A3_P2_M71_L001,Post_P12,Post,Non-responder,12,Naive / central-memory T (TCF7+)
+B5_P6_M71_L001,Post_P12,Post,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+C11_P4_M71_L001,Post_P12,Post,Non-responder,11,Dendritic cell (cDC)
+F2_P3_M71_L001,Post_P12,Post,Non-responder,9,Effector-memory CD8 T (GZMK+)
+F5_P3_M71_L001,Post_P12,Post,Non-responder,10,Activated T (CD8-biased)
+G11_P1_M71_L001,Post_P12,Post,Non-responder,10,Activated T (CD8-biased)
+H7_P4_M71_L001,Post_P12,Post,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+C7_P1_M74_L001,Post_P13,Post,Non-responder,0,B cell (IGHM+)
+F2_P1_M74_L001,Post_P13,Post,Non-responder,0,B cell (IGHM+)
+B1_P1_M43_L001,Post_P14,Post,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+C7_P4_M43_L001,Post_P14,Post,Non-responder,4,Monocyte / macrophage
+D1_P2_M43_L001,Post_P14,Post,Non-responder,10,Activated T (CD8-biased)
+E3_P2_M43_L001,Post_P14,Post,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+F10_P4_M43_L001,Post_P14,Post,Non-responder,12,Naive / central-memory T (TCF7+)
+F6_P3_M43_L001,Post_P14,Post,Non-responder,12,Naive / central-memory T (TCF7+)
+B12_P1_M9_L001,Pre_P15,Pre,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+E12_P5_M9_L001,Pre_P15,Pre,Non-responder,11,Dendritic cell (cDC)
+E3_P2_M9_L001,Pre_P15,Pre,Non-responder,10,Activated T (CD8-biased)
+B6_P3_M13_L001,Post_P15,Post,Non-responder,10,Activated T (CD8-biased)
+F6_P5_M13_L001,Post_P15,Post,Non-responder,10,Activated T (CD8-biased)
+G4_P2_M13_L001,Post_P15,Post,Non-responder,11,Dendritic cell (cDC)
+H3_P3_M13_L001,Post_P15,Post,Non-responder,10,Activated T (CD8-biased)
+B9_P4_MMD8_L001,Post_P16,Post,Non-responder,10,Activated T (CD8-biased)
+D10_P1_MMD8_L001,Post_P16,Post,Non-responder,11,Dendritic cell (cDC)
+D9_P1_MMD8_L001,Post_P16,Post,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+D10_P3_MMD9_L001,Post_P17,Post,Responder,0,B cell (IGHM+)
+H3_P3_MMD9_L001,Post_P17,Post,Responder,10,Activated T (CD8-biased)
+G5_P1_M45_L001,Post_P18,Post,Non-responder,1,pDC
+H8_P2_MMD7_L001,Post_P19,Post,Responder,10,Activated T (CD8-biased)
+F5_P1_M53_L001,Pre_P20,Pre,Non-responder,10,Activated T (CD8-biased)
+C12_P6_M51_L001,Post_P21,Post,Responder,0,B cell (IGHM+)
+B4_P4_MMD6_L001,Post_P22,Post,Non-responder,10,Activated T (CD8-biased)
+B5_P1_M83_L001,Post_P23,Post,Non-responder,4,Monocyte / macrophage
+G11_P1_M83_L001,Post_P23,Post,Non-responder,4,Monocyte / macrophage
+G9_P6_M83_L001,Post_P23,Post,Non-responder,5,Exhausted CD8 T (cytotoxic)
+H4_P1_M83_L001,Post_P23,Post,Non-responder,10,Activated T (CD8-biased)
+A6_P1_M24_L001,Pre_P25,Pre,Non-responder,8,NK / cytotoxic effector
+E6_P4_M24_L001,Pre_P25,Pre,Non-responder,10,Activated T (CD8-biased)
+F11_P5_M91_L001,Pre_P27,Pre,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+F1_P2_M90-7-31-17,Post_P30,Post,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+A6_P2_M77_L001,Pre_P31,Pre,Non-responder,10,Activated T (CD8-biased)
+D8_P2_M77_L001,Pre_P31,Pre,Non-responder,10,Activated T (CD8-biased)
+D6_P3_M76_L001,Pre_P33,Pre,Responder,12,Naive / central-memory T (TCF7+)
+H12_P2_M76_L001,Pre_P33,Pre,Responder,5,Exhausted CD8 T (cytotoxic)
+B1_P2_M41_L001,Pre_P35,Pre,Responder,0,B cell (IGHM+)
+G2_P7_MMD9_L001_myeloid_enriched,Post_P17,Post,Responder,0,B cell (IGHM+)
+E5_P8_M47_T_enriched,Post_P4,Post,Responder,2,Plasma cell
+D5_P12_MMD2-36B_T_enriched,Post_P10,Post,Non-responder,12,Naive / central-memory T (TCF7+)
+E6_P12_MMD2-36B_T_enriched,Post_P10,Post,Non-responder,9,Effector-memory CD8 T (GZMK+)
+A3_P6_M74_T_enriched,Post_P13,Post,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+A7_P7_M74_T_enriched,Post_P13,Post,Non-responder,10,Activated T (CD8-biased)
+A9_P7_M74_T_enriched,Post_P13,Post,Non-responder,10,Activated T (CD8-biased)
+B2_P6_M74_T_enriched,Post_P13,Post,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+C10_P7_M74_T_enriched,Post_P13,Post,Non-responder,8,NK / cytotoxic effector
+C4_P7_M74_T_enriched,Post_P13,Post,Non-responder,5,Exhausted CD8 T (cytotoxic)
+C8_P7_M74_T_enriched,Post_P13,Post,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+D1_P6_M74_T_enriched,Post_P13,Post,Non-responder,6,Activated CD8 T (GZMK+ TIGIT+)
+D2_P7_M74_T_enriched,Post_P13,Post,Non-responder,10,Activated T (CD8-biased)
+E10_P6_M74_T_enriched,Post_P13,Post,Non-responder,9,Effector-memory CD8 T (GZMK+)
+F2_P6_M74_T_enriched,Post_P13,Post,Non-responder,10,Activated T (CD8-biased)
+F7_P6_M74_T_enriched,Post_P13,Post,Non-responder,8,NK / cytotoxic effector
+G3_P6_M74_T_enriched,Post_P13,Post,Non-responder,10,Activated T (CD8-biased)
+H8_P6_M74_T_enriched,Post_P13,Post,Non-responder,9,Effector-memory CD8 T (GZMK+)
+A3_P8_MMD5_T_enriched,Post_P8,Post,Responder,9,Effector-memory CD8 T (GZMK+)
+A7_P8_MMD5_T_enriched,Post_P8,Post,Responder,12,Naive / central-memory T (TCF7+)
+B10_P8_MMD5_T_enriched,Post_P8,Post,Responder,9,Effector-memory CD8 T (GZMK+)
+E1_P8_MMD5_T_enriched,Post_P8,Post,Responder,9,Effector-memory CD8 T (GZMK+)
+F7_P6_MMD8_L001_T_enriched,Post_P16,Post,Non-responder,10,Activated T (CD8-biased)
+D11_P5_M67_L001_T_enriched,Post_P6,Post,Non-responder,10,Activated T (CD8-biased)
+H8_P5_M67_L001_T_enriched,Post_P6,Post,Non-responder,10,Activated T (CD8-biased)

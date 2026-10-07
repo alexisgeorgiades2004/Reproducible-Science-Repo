@@ -10,11 +10,13 @@ MT13 = ("MT-ND1", "MT-ND2", "MT-CO1", "MT-CO2", "MT-ATP8", "MT-ATP6", "MT-CO3",
 VDJ_PATTERN = r"^(TR[ABGD][VDJ]\d|IG[HKL][VDJ]\d)"
 
 
-def scrna_read_matrix_headers(path, n_probe=3):
-    """First `n_probe` lines of a (gzipped) matrix, as field counts + values.
+def scrna_diagnose_matrix_layout(path, n_probe=6):
+    """Trap 1: reconcile header vs data field counts; return the read parameters.
 
-    Reveals Traps 1 and 2: a second header row, and a trailing tab that makes
-    data rows one field WIDER than the headers.
+    A silent column shift is the most common way a matrix load goes wrong. Counts
+    fields in the first `n_probe` lines, infers how many leading lines are headers,
+    and reads the header-vs-data delta to name the layout. Run this BEFORE writing
+    any read call, and cross-check `n_value_columns` against the metadata file.
     """
     opener = gzip.open if str(path).endswith(".gz") else open
     rows = []
@@ -23,10 +25,48 @@ def scrna_read_matrix_headers(path, n_probe=3):
             if i >= n_probe:
                 break
             rows.append(line.rstrip("\n").split("\t"))
-    return {"n_fields": [len(r) for r in rows],
-            "leading_field": [r[0] for r in rows],
-            "last_field": [r[-1] for r in rows],
-            "rows": rows}
+    counts = [len(r) for r in rows]
+    tail = counts[1:] or counts
+    data_w = max(set(tail), key=tail.count)
+    n_head = 0
+    for r, c in zip(rows, counts):
+        if c != data_w or (r and r[0].strip() == ""):
+            n_head += 1
+        else:
+            break
+    head_w = counts[n_head - 1] if n_head else data_w
+    body = rows[n_head:] or rows
+    trailing_blank = bool(body) and all(r[-1] == "" for r in body)
+    idcols = 0
+    for f in body[0][:4]:
+        try:
+            float(f)
+            break
+        except ValueError:
+            idcols += 1
+    delta = data_w - head_w
+    n_values = data_w - idcols - (1 if trailing_blank else 0)
+    offset = head_w - n_values
+    if delta == 1 and trailing_blank:
+        note = "trailing tab on every data row - drop the last column"
+    elif delta == 1:
+        note = "header omits the index column - header names shifted by one"
+    elif delta == 2:
+        note = "two id columns, or trailing tab plus omitted index - inspect first fields"
+    elif delta == 0:
+        note = "header width matches data - index column named or placeheld"
+    elif delta < 0:
+        note = "header padded wider than data - truncate header to the data width"
+    else:
+        note = "unexpected delta - inspect the probe rows before reading"
+    return {"field_counts": counts, "n_header_rows": n_head, "header_width": head_w,
+            "data_width": data_w, "delta": delta, "trailing_blank_field": trailing_blank,
+            "n_id_columns": idcols, "n_value_columns": n_values,
+            "header_label_offset": offset, "diagnosis": note,
+            "read_params": {"skiprows": n_head, "index_col": 0,
+                            "drop_last_column": trailing_blank},
+            "header_labels": [r[offset:offset + n_values] for r in rows[:n_head]],
+            "probe_first_fields": [r[:3] for r in rows]}
 
 
 def scrna_parse_geo_sample_sheet(path, header_first_field="Sample name"):

@@ -105,7 +105,7 @@ two files by hand is often the right answer; do not build a framework for it.
 ### 2. Load and inspect
 Print dimensions, metadata columns and dtypes. Do not modify raw files. Assume
 the file layout is wrong until you have looked at the first three lines and the
-field counts - see Traps 1 and 2.
+field counts - run `scrna_diagnose_matrix_layout` first; see Trap 1.
 
 ### 3. Cohort characterisation
 Tabulate samples, conditions, timepoints and batches **before** any modelling.
@@ -115,9 +115,9 @@ confound that would otherwise invalidate step 13.
 
 ### 4. QC metrics and value-scale identification
 Compute genes detected per cell, cells detected per gene, and mitochondrial
-fraction. **Identify the value scale by testing an invariant** - see Trap 3 -
+fraction. **Identify the value scale by testing an invariant** - see Trap 2 -
 rather than trusting the filename. Compute mitochondrial fraction on the 13
-protein-coding MT genes (Trap 4).
+protein-coding MT genes (Trap 3).
 
 ### 5. Build the working matrix
 Stream the file once into a sparse matrix and save it. scRNA-seq matrices are
@@ -141,9 +141,9 @@ remaining choice is whether to z-score genes before PCA.
 
 ### 8. Feature selection
 Select ~2,000 highly variable genes by binned normalised dispersion. **Then look
-at which genes you got** - see Trap 5. Selection that returns lncRNAs, miRNAs,
+at which genes you got** - see Trap 4. Selection that returns lncRNAs, miRNAs,
 mitochondrial tRNAs, or genes detected in a handful of cells is broken, not
-subtle. Consider excluding receptor V(D)J segments up front (Trap 6).
+subtle. Consider excluding receptor V(D)J segments up front (Trap 5).
 
 ### 9. Dimensionality reduction
 PCA on scaled HVGs. At a few thousand genes, exact eigendecomposition of the
@@ -202,16 +202,35 @@ types before presenting a depletion as independent biology.
 
 ## Traps that cost real debugging time
 
-**1. Two header rows.** GEO supplementary matrices often carry a second header
-row (sample or batch label per cell) beneath the cell identifiers, both offset
-by a leading empty field. Reading with `header=0` silently turns the second row
-into a gene called `""`. Read the first three lines and compare field counts.
+**1. Reconcile the column count before you read anything.** This is the single most
+common way a matrix load goes wrong, and the failure is silent - you get a dataframe,
+just with every value shifted a column. Do not guess and do not fight it row by row.
+Count the tab-separated fields in the first ~6 lines, find the modal count among the
+later lines (that is the data width), and treat every leading line whose width differs,
+or whose first field is empty, as a header row. Then read the **delta** between data
+width and header width, because the delta identifies the layout:
 
-**2. Trailing tab.** Data rows may end with a tab, so they split into one *more*
-field than the header rows. A dtype map applied positionally then shifts every
-value by one column. Confirm the extra column parses as all-NaN.
+| Delta (data − header) | Almost always means | How to read it |
+|---|---|---|
+| 0, header's first field empty | One header row with a placeholder for the gene column | `index_col=0` |
+| 0, header's first field named | Header names the gene column too | `index_col=0` |
+| +1, data rows end in an empty field | **Trailing tab** on every data row | Drop the last column; confirm it is all-NaN |
+| +1, last field populated | Header omits the index column | `index_col=0`, header names shifted by one |
+| +2 | Two id columns (`gene_id` + `gene_symbol`), or a trailing tab on top of an omitted index | Inspect the first two fields of a data row |
+| negative | Header is padded wider than the data (spreadsheet export) | Truncate the header to the data width |
 
-**3. The filename lies about the value scale.** A file named `..._TPM_...` may
+More than one leading header row is normal in GEO supplementary files - a second row
+carrying a sample or batch label per cell is common, and reading with `header=0` turns it
+into a gene named `""`. Keep it: that per-cell label is often the sequencing or sort unit,
+and it may not agree with the sample column in the metadata file (see step 3).
+
+The check that settles it: the number of value columns you derive must equal the number
+of cell names in the header, and the cell names must match the identifiers in the
+metadata file. If those two agree, the layout is right; if they disagree by a small
+number, you have found the offset rather than a data problem. `scrna_diagnose_matrix_layout`
+does this and returns the read parameters - run it before writing any read call.
+
+**2. The filename lies about the value scale.** A file named `..._TPM_...` may
 contain log2(TPM+1). Test it: un-log with `2**x - 1` and check the per-cell sums
 land on 1e6. If they do, it was log2(TPM+1); if they land near 1e7, it was
 log2(TPM/10+1); if the un-logged values are astronomical, it was linear all
@@ -219,14 +238,14 @@ along. Getting this wrong means either double-logging the data or reporting
 "mitochondrial percentages" that are ratios of summed logarithms - a quantity
 with no meaning.
 
-**4. `MT-` matches more than you want.** In a full annotation the `MT-` prefix
+**3. `MT-` matches more than you want.** In a full annotation the `MT-` prefix
 matches all 37 mitochondrial genes: 13 protein-coding, 2 rRNA, 22 tRNA. Because
 mitochondrial rRNA is often the single most abundant transcript in the dataset,
 the 37-gene definition can put the median "mitochondrial fraction" above the
 conventional 10% cutoff and fail most of your cells. The threshold is defined on
 the 13 protein-coding genes. Use `scrna_mito_fraction`.
 
-**5. Dispersion binning fails silently.** Variance/mean dispersion must be
+**4. Dispersion binning fails silently.** Variance/mean dispersion must be
 normalised within expression bins, and it must be computed on *un-logged*
 values. Two ways this breaks: computing dispersion on log values, and using
 equal-*width* bins, where one bin can hold 60%+ of genes and normalise nothing.
@@ -234,7 +253,7 @@ Use equal-*frequency* bins and impose a detection floor (genes in >=1% of
 cells). The check is to look at the selected genes: a median detection of a
 dozen cells means you selected noise.
 
-**6. Receptor V(D)J genes cluster by clonotype, not cell state.** In immune
+**5. Receptor V(D)J genes cluster by clonotype, not cell state.** In immune
 data, TCR and BCR variable segments are among the most variable genes, and
 clustering on them splits T cells by which receptor they carry - patient-
 specific clones masquerading as cell types. Exclude the V, D and J *segments*
@@ -247,14 +266,15 @@ correct biology, not an artifact - the distinction is segments vs constant.
 
 Loading this skill defines these in the python kernel:
 
-- `scrna_read_matrix_headers(path)` - the two header rows and field counts.
+- `scrna_diagnose_matrix_layout(path)` - Trap 1: field-count reconciliation;
+  returns the header/data delta, a diagnosis, and the read parameters to use.
 - `scrna_parse_geo_sample_sheet(path, header_first_field)` - pull the per-cell
   table out of a filled-in GEO submission spreadsheet.
-- `scrna_check_log_scale(values_or_matrix)` - the Trap 3 invariant test.
-- `scrna_mito_fraction(matrix, genes, is_log2p1)` - Trap 4, 13 protein-coding.
-- `scrna_select_hvg(matrix, n_top, min_cells, n_bins, exclude_mask)` - Trap 5,
+- `scrna_check_log_scale(values_or_matrix)` - the Trap 2 invariant test.
+- `scrna_mito_fraction(matrix, genes, is_log2p1)` - Trap 3, 13 protein-coding.
+- `scrna_select_hvg(matrix, n_top, min_cells, n_bins, exclude_mask)` - Trap 4,
   equal-frequency bins on un-logged dispersion.
-- `scrna_vdj_mask(genes)` - Trap 6, V/D/J segments only.
+- `scrna_vdj_mask(genes)` - Trap 5, V/D/J segments only.
 - `scrna_knn_graph(pcs, k)` and `scrna_modularity(adjacency, labels)`.
 - `scrna_choose_k(linkage_matrix, adjacency, k_min, k_max, tol)` - plateau rule.
 - `scrna_bh(pvalues)` - Benjamini-Hochberg step-up.

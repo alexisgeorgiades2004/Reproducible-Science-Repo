@@ -1,0 +1,391 @@
+cluster,cell_type,rank,gene,mean_log2diff_vs_rest,pct_detected_in_cluster
+0,B cell (IGHM+),1,MS4A1,9.303,92.4
+0,B cell (IGHM+),2,IGHM,8.989,82.9
+0,B cell (IGHM+),3,CD79A,8.003,91.8
+0,B cell (IGHM+),4,HLA-DRA,7.84,99.5
+0,B cell (IGHM+),5,IGKC,7.485,70.0
+0,B cell (IGHM+),6,BCL11A,7.049,91.7
+0,B cell (IGHM+),7,IRF8,6.907,89.5
+0,B cell (IGHM+),8,CD19,6.853,77.3
+0,B cell (IGHM+),9,CD22,6.766,79.3
+0,B cell (IGHM+),10,BANK1,6.725,84.4
+0,B cell (IGHM+),11,CD79B,6.605,76.7
+0,B cell (IGHM+),12,CD83,5.826,84.9
+0,B cell (IGHM+),13,FCRL1,5.76,70.3
+0,B cell (IGHM+),14,HLA-DQB1,5.742,94.7
+0,B cell (IGHM+),15,HLA-DQA1,5.727,90.4
+0,B cell (IGHM+),16,NAPSB,5.605,66.6
+0,B cell (IGHM+),17,ADAM28,5.512,74.7
+0,B cell (IGHM+),18,IGHD,5.426,64.1
+0,B cell (IGHM+),19,HLA-DPA1,5.383,97.5
+0,B cell (IGHM+),20,FCER2,5.171,58.8
+0,B cell (IGHM+),21,NCF1,4.902,72.2
+0,B cell (IGHM+),22,LY9,4.88,76.1
+0,B cell (IGHM+),23,CIITA,4.84,73.6
+0,B cell (IGHM+),24,PAX5,4.808,70.4
+0,B cell (IGHM+),25,FGD2,4.671,82.2
+0,B cell (IGHM+),26,HLA-DPB1,4.666,96.4
+0,B cell (IGHM+),27,KIAA0226L,4.662,64.8
+0,B cell (IGHM+),28,SELL,4.587,75.4
+0,B cell (IGHM+),29,TCL1A,4.542,48.1
+0,B cell (IGHM+),30,LINC00926,4.477,65.1
+1,pDC,1,IGJ,11.501,99.2
+1,pDC,2,SERPINF1,10.263,97.0
+1,pDC,3,LILRA4,10.119,97.0
+1,pDC,4,NAPSB,9.619,97.7
+1,pDC,5,PLD4,9.434,98.1
+1,pDC,6,IRF8,9.383,99.6
+1,pDC,7,GZMB,9.247,99.2
+1,pDC,8,PLAC8,9.047,98.1
+1,pDC,9,GPR183,8.847,97.3
+1,pDC,10,AC096579.7,8.795,97.7
+1,pDC,11,BCL11A,8.651,100.0
+1,pDC,12,CYB561A3,8.401,97.3
+1,pDC,13,TCF4,8.365,100.0
+1,pDC,14,IRF7,8.299,98.5
+1,pDC,15,SPIB,8.223,94.7
+1,pDC,16,TYROBP,8.167,93.6
+1,pDC,17,CST3,8.041,95.8
+1,pDC,18,TGFBI,7.968,97.3
+1,pDC,19,GRN,7.967,96.6
+1,pDC,20,IL3RA,7.839,98.1
+1,pDC,21,RP11-38J22.6,7.833,90.5
+1,pDC,22,MPEG1,7.818,98.1
+1,pDC,23,CLIC3,7.79,93.6
+1,pDC,24,NPC2,7.732,96.6
+1,pDC,25,ITM2C,7.688,97.7
+1,pDC,26,TSPAN13,7.684,92.4
+1,pDC,27,FCER1G,7.647,89.8
+1,pDC,28,IGKC,7.56,97.0
+1,pDC,29,RNASE6,7.527,90.2
+1,pDC,30,LILRB4,7.406,94.3
+2,Plasma cell,1,IGKC,12.109,86.1
+2,Plasma cell,2,IGHG1,11.451,78.8
+2,Plasma cell,3,IGJ,10.669,96.7
+2,Plasma cell,4,MZB1,8.848,99.3
+2,Plasma cell,5,IGHG3,8.637,76.2
+2,Plasma cell,6,IGHG2,8.434,74.8
+2,Plasma cell,7,AC096579.7,7.91,85.4
+2,Plasma cell,8,DERL3,7.267,98.3
+2,Plasma cell,9,IGHG4,7.242,74.5
+2,Plasma cell,10,IGLC1,7.084,88.4
+2,Plasma cell,11,FKBP11,6.953,98.7
+2,Plasma cell,12,IGHA1,6.826,75.5
+2,Plasma cell,13,IGHGP,6.821,74.2
+2,Plasma cell,14,PRDX4,6.545,94.0
+2,Plasma cell,15,SSR4,6.35,100.0
+2,Plasma cell,16,XBP1,6.037,95.7
+2,Plasma cell,17,SEC11C,5.868,96.0
+2,Plasma cell,18,IGLL5,5.519,75.2
+2,Plasma cell,19,TXNDC5,5.474,91.7
+2,Plasma cell,20,FKBP2,5.288,94.7
+2,Plasma cell,21,CD79A,5.05,95.0
+2,Plasma cell,22,ITM2C,5.001,93.4
+2,Plasma cell,23,FCRL5,4.778,87.7
+2,Plasma cell,24,IGLC2,4.754,49.0
+2,Plasma cell,25,RAB30,4.418,84.8
+2,Plasma cell,26,PPAPDC1B,4.386,83.8
+2,Plasma cell,27,SDF2L1,4.364,87.1
+2,Plasma cell,28,VIMP,4.354,94.7
+2,Plasma cell,29,IGLC3,4.345,46.4
+2,Plasma cell,30,POU2AF1,4.293,94.7
+3,Proliferating T cell,1,STMN1,8.775,99.0
+3,Proliferating T cell,2,RRM2,7.972,89.3
+3,Proliferating T cell,3,TUBB,7.591,99.6
+3,Proliferating T cell,4,TYMS,7.359,88.8
+3,Proliferating T cell,5,TUBA1B,7.31,99.8
+3,Proliferating T cell,6,KIAA0101,7.026,87.1
+3,Proliferating T cell,7,UBE2C,6.984,77.6
+3,Proliferating T cell,8,HMGB2,6.977,98.9
+3,Proliferating T cell,9,NUSAP1,6.965,93.2
+3,Proliferating T cell,10,HIST1H4C,6.908,81.0
+3,Proliferating T cell,11,CDK1,6.891,84.2
+3,Proliferating T cell,12,RP11-386G11.10,6.529,99.4
+3,Proliferating T cell,13,CKS1B,6.521,88.4
+3,Proliferating T cell,14,TOP2A,6.482,88.1
+3,Proliferating T cell,15,TK1,6.392,80.5
+3,Proliferating T cell,16,H2AFZ,6.353,99.6
+3,Proliferating T cell,17,SMC4,6.281,92.9
+3,Proliferating T cell,18,ZWINT,6.215,81.4
+3,Proliferating T cell,19,PCNA,6.156,82.0
+3,Proliferating T cell,20,KIF22,6.134,90.0
+3,Proliferating T cell,21,AURKB,5.952,73.4
+3,Proliferating T cell,22,BIRC5,5.898,82.8
+3,Proliferating T cell,23,CCNA2,5.806,82.1
+3,Proliferating T cell,24,H2AFV,5.799,90.8
+3,Proliferating T cell,25,CENPM,5.797,78.8
+3,Proliferating T cell,26,DUT,5.777,85.2
+3,Proliferating T cell,27,PTTG1,5.777,81.5
+3,Proliferating T cell,28,TMPO,5.773,96.2
+3,Proliferating T cell,29,MCM7,5.752,82.8
+3,Proliferating T cell,30,UBE2T,5.663,76.5
+4,Monocyte / macrophage,1,IFI30,10.764,99.8
+4,Monocyte / macrophage,2,TYROBP,10.425,99.5
+4,Monocyte / macrophage,3,FCER1G,10.325,98.6
+4,Monocyte / macrophage,4,LYZ,10.193,98.1
+4,Monocyte / macrophage,5,RP11-1143G9.4,9.796,95.6
+4,Monocyte / macrophage,6,CST3,9.265,96.6
+4,Monocyte / macrophage,7,PLAUR,8.789,93.3
+4,Monocyte / macrophage,8,SERPINA1,8.66,94.4
+4,Monocyte / macrophage,9,TIMP1,8.568,89.7
+4,Monocyte / macrophage,10,CD68,8.345,95.5
+4,Monocyte / macrophage,11,CD14,8.308,88.0
+4,Monocyte / macrophage,12,GRN,8.271,96.2
+4,Monocyte / macrophage,13,AIF1,8.131,94.1
+4,Monocyte / macrophage,14,TGFBI,7.743,89.8
+4,Monocyte / macrophage,15,NPC2,7.712,95.2
+4,Monocyte / macrophage,16,CTSB,7.652,99.2
+4,Monocyte / macrophage,17,S100A9,7.467,76.2
+4,Monocyte / macrophage,18,FCGR2A,7.379,91.6
+4,Monocyte / macrophage,19,GLUL,7.321,92.0
+4,Monocyte / macrophage,20,FCN1,7.098,71.9
+4,Monocyte / macrophage,21,HLA-DRA,7.079,98.1
+4,Monocyte / macrophage,22,SOD2,6.979,91.1
+4,Monocyte / macrophage,23,MS4A6A,6.925,83.3
+4,Monocyte / macrophage,24,PSAP,6.865,99.8
+4,Monocyte / macrophage,25,CTSS,6.776,97.0
+4,Monocyte / macrophage,26,S100A11,6.743,98.8
+4,Monocyte / macrophage,27,BCL2A1,6.544,80.6
+4,Monocyte / macrophage,28,FCGRT,6.489,83.4
+4,Monocyte / macrophage,29,FCGR3A,6.444,75.6
+4,Monocyte / macrophage,30,CLEC7A,6.372,90.9
+5,Exhausted CD8 T (cytotoxic),1,NKG7,6.958,97.6
+5,Exhausted CD8 T (cytotoxic),2,CCL5,6.069,99.3
+5,Exhausted CD8 T (cytotoxic),3,PRF1,5.619,93.1
+5,Exhausted CD8 T (cytotoxic),4,CCL4,5.178,83.6
+5,Exhausted CD8 T (cytotoxic),5,CD8A,5.006,79.9
+5,Exhausted CD8 T (cytotoxic),6,GZMA,4.932,84.6
+5,Exhausted CD8 T (cytotoxic),7,KLRK1,4.825,90.2
+5,Exhausted CD8 T (cytotoxic),8,CST7,4.609,92.0
+5,Exhausted CD8 T (cytotoxic),9,GZMB,4.575,67.7
+5,Exhausted CD8 T (cytotoxic),10,HAVCR2,4.265,72.9
+5,Exhausted CD8 T (cytotoxic),11,GZMH,4.06,64.1
+5,Exhausted CD8 T (cytotoxic),12,PDCD1,4.041,70.8
+5,Exhausted CD8 T (cytotoxic),13,CTSW,3.911,73.5
+5,Exhausted CD8 T (cytotoxic),14,GZMK,3.814,67.5
+5,Exhausted CD8 T (cytotoxic),15,APOBEC3G,3.694,85.0
+5,Exhausted CD8 T (cytotoxic),16,CCL4L1,3.687,79.2
+5,Exhausted CD8 T (cytotoxic),17,CD3D,3.643,90.5
+5,Exhausted CD8 T (cytotoxic),18,CD8B,3.622,64.3
+5,Exhausted CD8 T (cytotoxic),19,CD27,3.604,73.3
+5,Exhausted CD8 T (cytotoxic),20,CXCR6,3.521,56.4
+5,Exhausted CD8 T (cytotoxic),21,TIGIT,3.493,72.8
+5,Exhausted CD8 T (cytotoxic),22,IFNG,3.479,58.1
+5,Exhausted CD8 T (cytotoxic),23,LYST,3.456,89.8
+5,Exhausted CD8 T (cytotoxic),24,CCL3,3.452,55.2
+5,Exhausted CD8 T (cytotoxic),25,RGS1,3.431,93.6
+5,Exhausted CD8 T (cytotoxic),26,CD2,3.31,92.1
+5,Exhausted CD8 T (cytotoxic),27,TRAC,3.24,94.6
+5,Exhausted CD8 T (cytotoxic),28,SIRPG,3.239,65.1
+5,Exhausted CD8 T (cytotoxic),29,IL32,3.235,93.2
+5,Exhausted CD8 T (cytotoxic),30,CD3G,3.214,96.5
+6,Activated CD8 T (GZMK+ TIGIT+),1,FABP5,3.724,67.7
+6,Activated CD8 T (GZMK+ TIGIT+),2,NUCB2,3.463,62.1
+6,Activated CD8 T (GZMK+ TIGIT+),3,CD27,3.375,76.1
+6,Activated CD8 T (GZMK+ TIGIT+),4,STMN1,3.347,53.9
+6,Activated CD8 T (GZMK+ TIGIT+),5,KLRK1,3.293,82.8
+6,Activated CD8 T (GZMK+ TIGIT+),6,TIGIT,3.291,77.1
+6,Activated CD8 T (GZMK+ TIGIT+),7,MT2A,3.282,74.1
+6,Activated CD8 T (GZMK+ TIGIT+),8,MCM5,3.136,58.0
+6,Activated CD8 T (GZMK+ TIGIT+),9,ITM2A,3.132,75.5
+6,Activated CD8 T (GZMK+ TIGIT+),10,CRTAM,3.037,60.9
+6,Activated CD8 T (GZMK+ TIGIT+),11,SH2D1A,2.999,71.1
+6,Activated CD8 T (GZMK+ TIGIT+),12,NKG7,2.985,79.6
+6,Activated CD8 T (GZMK+ TIGIT+),13,LDHB,2.976,91.1
+6,Activated CD8 T (GZMK+ TIGIT+),14,PARK7,2.881,81.9
+6,Activated CD8 T (GZMK+ TIGIT+),15,PGAM1,2.876,79.5
+6,Activated CD8 T (GZMK+ TIGIT+),16,CXCL13,2.873,45.5
+6,Activated CD8 T (GZMK+ TIGIT+),17,CD8B,2.772,60.9
+6,Activated CD8 T (GZMK+ TIGIT+),18,CALM3,2.764,84.7
+6,Activated CD8 T (GZMK+ TIGIT+),19,CD3D,2.698,88.3
+6,Activated CD8 T (GZMK+ TIGIT+),20,MCM7,2.686,48.4
+6,Activated CD8 T (GZMK+ TIGIT+),21,NME1-NME2,2.676,67.1
+6,Activated CD8 T (GZMK+ TIGIT+),22,SIRPG,2.66,66.0
+6,Activated CD8 T (GZMK+ TIGIT+),23,ANP32B,2.657,74.0
+6,Activated CD8 T (GZMK+ TIGIT+),24,COTL1,2.623,92.9
+6,Activated CD8 T (GZMK+ TIGIT+),25,FKBP1A,2.578,82.9
+6,Activated CD8 T (GZMK+ TIGIT+),26,RAN,2.542,81.2
+6,Activated CD8 T (GZMK+ TIGIT+),27,PSMB8,2.524,82.3
+6,Activated CD8 T (GZMK+ TIGIT+),28,CD8A,2.46,66.0
+6,Activated CD8 T (GZMK+ TIGIT+),29,SNRPB,2.449,76.0
+6,Activated CD8 T (GZMK+ TIGIT+),30,EID1,2.446,72.9
+7,"CD4 T, Treg-like",1,CD4,4.731,76.1
+7,"CD4 T, Treg-like",2,TNFRSF18,4.475,60.7
+7,"CD4 T, Treg-like",3,SPOCK2,4.045,87.9
+7,"CD4 T, Treg-like",4,TNFRSF4,3.91,51.1
+7,"CD4 T, Treg-like",5,CTLA4,3.654,70.9
+7,"CD4 T, Treg-like",6,TIGIT,3.567,73.1
+7,"CD4 T, Treg-like",7,TRAC,3.54,95.7
+7,"CD4 T, Treg-like",8,ICOS,3.396,60.8
+7,"CD4 T, Treg-like",9,BATF,3.308,62.1
+7,"CD4 T, Treg-like",10,IL32,3.153,90.5
+7,"CD4 T, Treg-like",11,TMEM173,3.133,61.3
+7,"CD4 T, Treg-like",12,ARID5B,3.077,83.7
+7,"CD4 T, Treg-like",13,CD2,3.008,88.8
+7,"CD4 T, Treg-like",14,TRBC2,2.902,99.5
+7,"CD4 T, Treg-like",15,MAF,2.897,68.2
+7,"CD4 T, Treg-like",16,PBXIP1,2.799,77.0
+7,"CD4 T, Treg-like",17,CD28,2.786,63.0
+7,"CD4 T, Treg-like",18,PIM2,2.722,87.0
+7,"CD4 T, Treg-like",19,TBC1D4,2.651,52.7
+7,"CD4 T, Treg-like",20,FOXP3,2.624,45.7
+7,"CD4 T, Treg-like",21,ITM2A,2.497,65.4
+7,"CD4 T, Treg-like",22,LTB,2.463,52.2
+7,"CD4 T, Treg-like",23,DUSP4,2.425,73.0
+7,"CD4 T, Treg-like",24,ICA1,2.316,32.2
+7,"CD4 T, Treg-like",25,PIK3IP1,2.289,64.6
+7,"CD4 T, Treg-like",26,PHTF2,2.252,50.5
+7,"CD4 T, Treg-like",27,TNFRSF25,2.242,42.3
+7,"CD4 T, Treg-like",28,CD3D,2.236,80.6
+7,"CD4 T, Treg-like",29,IL2RA,2.234,31.7
+7,"CD4 T, Treg-like",30,IL6ST,2.23,59.5
+8,NK / cytotoxic effector,1,GNLY,7.74,74.4
+8,NK / cytotoxic effector,2,NKG7,6.263,95.9
+8,NK / cytotoxic effector,3,GZMB,5.111,75.5
+8,NK / cytotoxic effector,4,PRF1,4.998,88.2
+8,NK / cytotoxic effector,5,FGFBP2,4.746,48.0
+8,NK / cytotoxic effector,6,GZMH,4.729,69.6
+8,NK / cytotoxic effector,7,CTSW,4.561,79.6
+8,NK / cytotoxic effector,8,KLRD1,4.473,68.8
+8,NK / cytotoxic effector,9,FCGR3A,3.945,50.5
+8,NK / cytotoxic effector,10,PLAC8,3.794,60.0
+8,NK / cytotoxic effector,11,CST7,3.583,85.7
+8,NK / cytotoxic effector,12,CCL5,3.58,92.7
+8,NK / cytotoxic effector,13,TRDC,3.332,39.4
+8,NK / cytotoxic effector,14,S1PR5,3.229,42.3
+8,NK / cytotoxic effector,15,SPON2,3.227,46.1
+8,NK / cytotoxic effector,16,GPR56,3.219,56.5
+8,NK / cytotoxic effector,17,CCL4,3.181,68.3
+8,NK / cytotoxic effector,18,KLRK1,3.05,78.1
+8,NK / cytotoxic effector,19,HOPX,3.001,45.0
+8,NK / cytotoxic effector,20,KLRF1,2.848,32.0
+8,NK / cytotoxic effector,21,GZMA,2.804,70.2
+8,NK / cytotoxic effector,22,CX3CR1,2.671,35.8
+8,NK / cytotoxic effector,23,KLRB1,2.562,38.6
+8,NK / cytotoxic effector,24,TYROBP,2.49,38.1
+8,NK / cytotoxic effector,25,SAMD3,2.452,51.3
+8,NK / cytotoxic effector,26,STAT4,2.412,72.8
+8,NK / cytotoxic effector,27,BIN2,2.354,61.9
+8,NK / cytotoxic effector,28,TGFBR3,2.339,46.7
+8,NK / cytotoxic effector,29,PXN,2.269,52.9
+8,NK / cytotoxic effector,30,CCL4L1,2.261,63.3
+9,Effector-memory CD8 T (GZMK+),1,CCL5,4.335,93.2
+9,Effector-memory CD8 T (GZMK+),2,NKG7,3.259,77.1
+9,Effector-memory CD8 T (GZMK+),3,GZMA,2.856,67.9
+9,Effector-memory CD8 T (GZMK+),4,GZMK,2.659,57.2
+9,Effector-memory CD8 T (GZMK+),5,CD8A,2.546,64.6
+9,Effector-memory CD8 T (GZMK+),6,KLRK1,2.503,70.7
+9,Effector-memory CD8 T (GZMK+),7,IL32,2.469,88.7
+9,Effector-memory CD8 T (GZMK+),8,CST7,2.195,73.4
+9,Effector-memory CD8 T (GZMK+),9,TRBC2,1.959,96.5
+9,Effector-memory CD8 T (GZMK+),10,CD3G,1.919,86.8
+9,Effector-memory CD8 T (GZMK+),11,ANXA1,1.9,62.3
+9,Effector-memory CD8 T (GZMK+),12,IFITM1,1.885,81.9
+9,Effector-memory CD8 T (GZMK+),13,AOAH,1.84,53.8
+9,Effector-memory CD8 T (GZMK+),14,KLRG1,1.812,38.1
+9,Effector-memory CD8 T (GZMK+),15,CCL4,1.779,55.2
+9,Effector-memory CD8 T (GZMK+),16,CD69,1.779,71.2
+9,Effector-memory CD8 T (GZMK+),17,TRAC,1.777,85.2
+9,Effector-memory CD8 T (GZMK+),18,SAMD3,1.773,42.3
+9,Effector-memory CD8 T (GZMK+),19,CTSW,1.643,52.7
+9,Effector-memory CD8 T (GZMK+),20,CD3D,1.62,74.7
+9,Effector-memory CD8 T (GZMK+),21,TC2N,1.6,45.0
+9,Effector-memory CD8 T (GZMK+),22,STOM,1.599,55.7
+9,Effector-memory CD8 T (GZMK+),23,CD3E,1.451,81.2
+9,Effector-memory CD8 T (GZMK+),24,CD96,1.448,62.7
+9,Effector-memory CD8 T (GZMK+),25,LCK,1.412,70.1
+9,Effector-memory CD8 T (GZMK+),26,CD2,1.394,76.3
+9,Effector-memory CD8 T (GZMK+),27,NLRC5,1.387,81.6
+9,Effector-memory CD8 T (GZMK+),28,TBCD,1.384,40.6
+9,Effector-memory CD8 T (GZMK+),29,GZMH,1.382,41.0
+9,Effector-memory CD8 T (GZMK+),30,CD8B,1.352,43.5
+10,Activated T (CD8-biased),1,CCL5,2.89,86.5
+10,Activated T (CD8-biased),2,CD8A,2.133,62.1
+10,Activated T (CD8-biased),3,CCL4,1.9,59.2
+10,Activated T (CD8-biased),4,KLRK1,1.672,61.4
+10,Activated T (CD8-biased),5,RGS1,1.591,84.9
+10,Activated T (CD8-biased),6,CCL4L1,1.54,54.9
+10,Activated T (CD8-biased),7,HAVCR2,1.539,49.7
+10,Activated T (CD8-biased),8,DUSP4,1.522,59.7
+10,Activated T (CD8-biased),9,SLA,1.456,72.7
+10,Activated T (CD8-biased),10,TMEM2,1.394,68.8
+10,Activated T (CD8-biased),11,TNFAIP3,1.342,88.3
+10,Activated T (CD8-biased),12,ZEB2,1.329,50.3
+10,Activated T (CD8-biased),13,CBLB,1.324,73.0
+10,Activated T (CD8-biased),14,AOAH,1.323,50.4
+10,Activated T (CD8-biased),15,SAMSN1,1.301,62.0
+10,Activated T (CD8-biased),16,RNF19A,1.296,75.0
+10,Activated T (CD8-biased),17,GABARAPL1,1.286,45.8
+10,Activated T (CD8-biased),18,ATP1B3,1.273,56.9
+10,Activated T (CD8-biased),19,CTLA4,1.255,42.8
+10,Activated T (CD8-biased),20,CRTAM,1.225,35.9
+10,Activated T (CD8-biased),21,NAB1,1.221,39.0
+10,Activated T (CD8-biased),22,RBPJ,1.212,56.3
+10,Activated T (CD8-biased),23,CCL4L2,1.185,45.1
+10,Activated T (CD8-biased),24,TNS3,1.179,29.1
+10,Activated T (CD8-biased),25,TNFRSF9,1.163,33.9
+10,Activated T (CD8-biased),26,LYST,1.151,70.8
+10,Activated T (CD8-biased),27,ZFP36L2,1.143,80.0
+10,Activated T (CD8-biased),28,CREM,1.142,58.7
+10,Activated T (CD8-biased),29,CD84,1.098,49.8
+10,Activated T (CD8-biased),30,PFKFB3,1.094,51.6
+11,Dendritic cell (cDC),1,CST3,10.11,95.9
+11,Dendritic cell (cDC),2,LYZ,9.621,93.9
+11,Dendritic cell (cDC),3,RP11-1143G9.4,9.351,92.2
+11,Dendritic cell (cDC),4,IFI30,9.194,96.6
+11,Dendritic cell (cDC),5,HLA-DRA,8.408,100.0
+11,Dendritic cell (cDC),6,FCER1G,8.192,89.2
+11,Dendritic cell (cDC),7,TYROBP,7.945,87.5
+11,Dendritic cell (cDC),8,GRN,7.884,95.9
+11,Dendritic cell (cDC),9,GSN,7.461,93.9
+11,Dendritic cell (cDC),10,AIF1,7.272,91.2
+11,Dendritic cell (cDC),11,HLA-DQA1,7.234,96.6
+11,Dendritic cell (cDC),12,NAPSB,7.182,82.8
+11,Dendritic cell (cDC),13,HLA-DMB,7.125,92.9
+11,Dendritic cell (cDC),14,CPVL,7.006,84.1
+11,Dendritic cell (cDC),15,HLA-DQB1,6.885,98.6
+11,Dendritic cell (cDC),16,LST1,6.861,87.5
+11,Dendritic cell (cDC),17,HLA-DPA1,6.812,98.6
+11,Dendritic cell (cDC),18,CTSH,6.744,86.1
+11,Dendritic cell (cDC),19,C1orf162,6.725,90.2
+11,Dendritic cell (cDC),20,NPC2,6.371,90.9
+11,Dendritic cell (cDC),21,GPX1,6.335,96.3
+11,Dendritic cell (cDC),22,TGFBI,6.246,87.5
+11,Dendritic cell (cDC),23,HLA-DPB1,6.235,99.0
+11,Dendritic cell (cDC),24,HLA-DMA,6.22,97.0
+11,Dendritic cell (cDC),25,WARS,6.214,90.2
+11,Dendritic cell (cDC),26,FGL2,6.178,90.9
+11,Dendritic cell (cDC),27,TIMP1,6.122,78.4
+11,Dendritic cell (cDC),28,PLAUR,6.072,76.0
+11,Dendritic cell (cDC),29,ITGAX,6.059,95.3
+11,Dendritic cell (cDC),30,CIITA,5.968,95.9
+12,Naive / central-memory T (TCF7+),1,IL7R,5.119,80.8
+12,Naive / central-memory T (TCF7+),2,CCR7,2.903,46.2
+12,Naive / central-memory T (TCF7+),3,TCF7,2.843,64.3
+12,Naive / central-memory T (TCF7+),4,ANXA1,2.647,66.4
+12,Naive / central-memory T (TCF7+),5,S1PR1,2.255,42.1
+12,Naive / central-memory T (TCF7+),6,GPR183,2.25,51.5
+12,Naive / central-memory T (TCF7+),7,LTB,2.135,50.1
+12,Naive / central-memory T (TCF7+),8,TNFRSF25,2.129,39.9
+12,Naive / central-memory T (TCF7+),9,CAMK4,2.072,47.8
+12,Naive / central-memory T (TCF7+),10,TC2N,1.864,48.9
+12,Naive / central-memory T (TCF7+),11,TRBC2,1.83,97.2
+12,Naive / central-memory T (TCF7+),12,LEF1,1.819,31.1
+12,Naive / central-memory T (TCF7+),13,TRAC,1.815,86.8
+12,Naive / central-memory T (TCF7+),14,TNFAIP3,1.78,87.7
+12,Naive / central-memory T (TCF7+),15,SORL1,1.766,48.6
+12,Naive / central-memory T (TCF7+),16,SELL,1.663,47.1
+12,Naive / central-memory T (TCF7+),17,FLT3LG,1.648,37.3
+12,Naive / central-memory T (TCF7+),18,FOS,1.64,78.8
+12,Naive / central-memory T (TCF7+),19,STAT4,1.638,64.8
+12,Naive / central-memory T (TCF7+),20,CD69,1.624,71.0
+12,Naive / central-memory T (TCF7+),21,LEPROTL1,1.615,64.6
+12,Naive / central-memory T (TCF7+),22,ZFP36L2,1.554,84.2
+12,Naive / central-memory T (TCF7+),23,MGAT4A,1.549,42.2
+12,Naive / central-memory T (TCF7+),24,ABLIM1,1.524,44.2
+12,Naive / central-memory T (TCF7+),25,LMNA,1.493,40.1
+12,Naive / central-memory T (TCF7+),26,SPOCK2,1.478,70.7
+12,Naive / central-memory T (TCF7+),27,PIK3IP1,1.473,57.1
+12,Naive / central-memory T (TCF7+),28,PTGER4,1.468,52.8
+12,Naive / central-memory T (TCF7+),29,DGKA,1.436,56.0
+12,Naive / central-memory T (TCF7+),30,TMEM66,1.427,93.8

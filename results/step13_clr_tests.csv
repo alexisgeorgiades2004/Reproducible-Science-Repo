@@ -1,0 +1,14 @@
+analysis,cell_type,delta,p,q
+CLR,B cell (IGHM+),0.73333,0.00567,0.02458
+CLR,pDC,-0.46667,0.09472,0.17591
+CLR,Plasma cell,0.11111,0.7197,0.8452
+CLR,Proliferating T cell,-0.8,0.0021,0.01365
+CLR,Monocyte / macrophage,-0.51111,0.06525,0.14138
+CLR,Exhausted CD8 T (cytotoxic),-0.08889,0.78019,0.8452
+CLR,Activated CD8 T (GZMK+ TIGIT+),-0.4,0.1564,0.25415
+CLR,"CD4 T, Treg-like",0.55556,0.04347,0.14129
+CLR,NK / cytotoxic effector,0.02222,0.96824,0.96824
+CLR,Effector-memory CD8 T (GZMK+),0.51111,0.06525,0.14138
+CLR,Activated T (CD8-biased),-0.13333,0.66072,0.8452
+CLR,Dendritic cell (cDC),-0.33333,0.24281,0.35072
+CLR,Naive / central-memory T (TCF7+),0.86667,0.00065,0.00844

@@ -1,4 +1,9 @@
 # Central parameters. Notebooks read from here; do not hard-code these values in chunks.
+#
+# SCOPE: the thresholds below, and the numbers quoted in their comments, were MEASURED on
+# this project's dataset (GEO GSE120575, plate-based Smart-seq2). They are not defaults.
+# On any other dataset, re-measure before reusing them - in particular the gene-detection
+# floor and cap, which were originally written for droplet data and did not fit this one.
 seed: 42
 
 qc:
@@ -19,7 +24,14 @@ qc:
   apply_max_genes_per_cell: false
 
 normalization:
-  n_variable_features: 2000
+  # Step 7 is a documented no-op (data are already TPM and log2(TPM+1)); only HVG settings live here.
+  n_variable_features: 3000
+  # A gene is an HVG candidate only if detected in at least this fraction of cells. The skill default is
+  # 0.01; at 0.01 the top 2000 held 29.3% clone-named/small-RNA/mito genes and only 2 of 20 T-cell state
+  # genes. At 0.05 with 3000 genes: 9.4% noisy picks, 9 of 20 T-cell state genes (results/step08_hvg_sensitivity.csv).
+  hvg_min_cell_fraction: 0.05
+  # Exclude T/B-cell receptor V/D/J SEGMENTS from candidacy; constant regions (IGHM, IGKC, TRAC...) are kept.
+  hvg_exclude_vdj: true
 
 dimensionality_reduction:
   n_pcs: 30

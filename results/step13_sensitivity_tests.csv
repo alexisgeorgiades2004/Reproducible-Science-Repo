@@ -1,0 +1,44 @@
+cell_type,delta,p,q,analysis
+B cell (IGHM+),0.64444,0.01705,0.05541,primary
+pDC,-0.64444,0.01636,0.05541,primary
+Plasma cell,-0.1,0.71675,0.77648,primary
+Proliferating T cell,-0.77778,0.00296,0.01942,primary
+Monocyte / macrophage,-0.54444,0.04539,0.09834,primary
+Exhausted CD8 T (cytotoxic),-0.28889,0.31538,0.40999,primary
+Activated CD8 T (GZMK+ TIGIT+),-0.55556,0.04347,0.09834,primary
+"CD4 T, Treg-like",0.33333,0.24281,0.35072,primary
+NK / cytotoxic effector,-0.17778,0.54896,0.64877,primary
+Effector-memory CD8 T (GZMK+),0.08889,0.78019,0.78019,primary
+Activated T (CD8-biased),-0.53333,0.05348,0.09931,primary
+Dendritic cell (cDC),-0.42222,0.12951,0.21046,primary
+Naive / central-memory T (TCF7+),0.77778,0.00299,0.01942,primary
+B cell (IGHM+),0.64444,0.01705,0.05541,A: removed cells returned (projected)
+pDC,-0.64444,0.01636,0.05541,A: removed cells returned (projected)
+Plasma cell,-0.1,0.71675,0.71675,A: removed cells returned (projected)
+Proliferating T cell,-0.8,0.00208,0.01942,A: removed cells returned (projected)
+Monocyte / macrophage,-0.45556,0.09859,0.16022,A: removed cells returned (projected)
+Exhausted CD8 T (cytotoxic),-0.26667,0.35623,0.4631,A: removed cells returned (projected)
+Activated CD8 T (GZMK+ TIGIT+),-0.6,0.02793,0.07261,A: removed cells returned (projected)
+"CD4 T, Treg-like",0.31111,0.27751,0.40085,A: removed cells returned (projected)
+NK / cytotoxic effector,-0.22222,0.44697,0.52823,A: removed cells returned (projected)
+Effector-memory CD8 T (GZMK+),0.13333,0.66072,0.71578,A: removed cells returned (projected)
+Activated T (CD8-biased),-0.51111,0.06525,0.12119,A: removed cells returned (projected)
+Dendritic cell (cDC),-0.53333,0.05142,0.11141,A: removed cells returned (projected)
+Naive / central-memory T (TCF7+),0.77778,0.00299,0.01942,A: removed cells returned (projected)
+B/plasma,0.46667,0.09408,0.1568,B: four-lineage collapse
+Myeloid,-0.58889,0.02912,0.0728,B: four-lineage collapse
+NK/cytotoxic,-0.17778,0.54896,0.60378,B: four-lineage collapse
+T,0.15556,0.60378,0.60378,B: four-lineage collapse
+pDC/myeloid-like,-0.64444,0.01636,0.0728,B: four-lineage collapse
+B cell (IGHM+),0.64444,0.01705,0.043,"C: drop C10, renormalise"
+pDC,-0.64444,0.01636,0.043,"C: drop C10, renormalise"
+Plasma cell,-0.14444,0.58717,0.64055,"C: drop C10, renormalise"
+Proliferating T cell,-0.86667,0.00065,0.00779,"C: drop C10, renormalise"
+Monocyte / macrophage,-0.63333,0.01792,0.043,"C: drop C10, renormalise"
+Exhausted CD8 T (cytotoxic),-0.35556,0.21102,0.31654,"C: drop C10, renormalise"
+Activated CD8 T (GZMK+ TIGIT+),-0.57778,0.03499,0.06997,"C: drop C10, renormalise"
+"CD4 T, Treg-like",0.24444,0.40018,0.53358,"C: drop C10, renormalise"
+NK / cytotoxic effector,-0.2,0.4967,0.59604,"C: drop C10, renormalise"
+Effector-memory CD8 T (GZMK+),0.02222,0.96824,0.96824,"C: drop C10, renormalise"
+Dendritic cell (cDC),-0.48889,0.07617,0.13057,"C: drop C10, renormalise"
+Naive / central-memory T (TCF7+),0.73333,0.00567,0.03403,"C: drop C10, renormalise"

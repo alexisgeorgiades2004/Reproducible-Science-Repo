@@ -82,7 +82,7 @@ This repo is a reproducible scRNA-seq analysis (Immunotherapy Tumor Response). R
   page, or your own recall rather than from a computation run in this session, say so
   explicitly. Never present a remembered value as a measurement.
 - **Prefer checks against an invariant the data must satisfy.** Example: TPM columns must sum
-  to 1e6, and testing that is what revealed the GSE120575 matrix is log-transformed rather
+  to 1e6, and testing that is how you find out a matrix is already log-transformed rather
   than linear TPM. A check that only restates what the code did proves nothing.
 - **Read results back from the saved file before quoting them.** Do not re-type numbers from
   memory or from an earlier cell's output.
